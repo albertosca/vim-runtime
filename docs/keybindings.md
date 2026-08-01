@@ -549,7 +549,8 @@ Ver também seção 13 (`,mg`, `,mr`, `,Mm`/`,Mr` — compartilhados/anotados l�
 | :--- | :--- |
 | (automático, ghost text) | Sugestão aparece sozinha ~600ms depois de parar de digitar (provider padrão: Gemini) |
 | `Tab` | Aceita a sugestão — **só quando ela está visível**; sem sugestão, `Tab` funciona exatamente como antes (mapeamento original preservado, inclusive baseado em callback Lua tipo blink.cmp) |
-| `Esc` | Descarta só a sugestão visível, **sem sair do insert mode** — sem sugestão visível, `Esc` funciona exatamente como antes |
+| `<C-]>` | Descarta a sugestão visível **sem sair do insert mode** |
+| `Esc` | Sai do insert mode normalmente (a sugestão é limpa junto, pelo `InsertLeavePre`) — o plugin **não** sequestra mais o `Esc` |
 | `,pt` | Liga/desliga o auto-trigger (fica manual — sem custo de API não-intencional) |
 | `,pr` | Cicla entre os modelos configurados em `g:vim_ai_autocomplete_models` (default: Gemini e Claude) — **só existe com 2+ modelos ativos** (API key presente) |
 | `,pm` | Escolhe o modelo via `vim.ui.select` (funciona com Telescope automaticamente, se instalado) — alternativa ao `,pr`/comando pra quem tem 3+ modelos ativos |
@@ -587,7 +588,8 @@ Ver também seção 13 (`,mg`, `,mr`, `,Mm`/`,Mr` — compartilhados/anotados l�
 | :--- | :--- |
 | (automático, ghost text) | Sugestão aparece sozinha ~600ms depois de parar de digitar (provider padrão: Gemini) |
 | `Tab` | Aceita a sugestão — **só quando ela está visível**; sem sugestão, `Tab` funciona exatamente como antes (CoC) |
-| `Esc` | Descarta só a sugestão visível, **sem sair do insert mode** — sem sugestão visível, `Esc` funciona exatamente como antes (sai do insert mode normal) |
+| `<C-]>` | Descarta a sugestão visível **sem sair do insert mode** |
+| `Esc` | Sai do insert mode normalmente (a sugestão é limpa junto, pelo `InsertLeavePre`) — o plugin **não** sequestra mais o `Esc` |
 | `,pt` | Liga/desliga o auto-trigger (fica manual — sem custo de API não-intencional) |
 | `,pr` | Cicla entre os modelos configurados em `g:vim_ai_autocomplete_models` (default: Gemini e Claude) — **só existe com 2+ modelos ativos** (API key presente) |
 | `:VimAiAutocompleteModel <nome>` | Seleciona um modelo diretamente pelo nome, sem precisar ciclar (autocomplete de argumento sugere os nomes ativos) |
