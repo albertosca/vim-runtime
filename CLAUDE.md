@@ -1,81 +1,98 @@
-# Vim Config — Guia para IA
+# Vim Config — Guide for AI
 
-Setup profissional de Vim 9.1+ para desenvolvimento poliglota (Elixir/Phoenix, Ruby/Rails, JS/React/Node, Python, Go, Rust).
+Professional Vim 9.1+ setup for polyglot development (Elixir/Phoenix, Ruby/Rails, JS/React/Node, Python, Go, Rust).
 
-## Estrutura do repositório
+## Repository layout
 
 ```
-configs.vim              ← ARQUIVO PRINCIPAL — todas as customizações pessoais
+configs.vim              ← MAIN FILE — every personal customisation
 vimrcs/
-  options.vim            ← opções do Vim (set commands, search, indent, UI)
-  filetypes.vim          ← detecção de filetype e indent por linguagem
-  plugins.vim            ← carregamento do Pathogen + config de plugins terceiros
-  editor.vim             ← undo persistente, GUI, helpers, VisualSelection
-plugins/                 ← 50 plugins (gerenciados por Pathogen, NÃO vim-plug/lazy)
+  options.vim            ← Vim options (set commands, search, indent, UI)
+  filetypes.vim          ← filetype detection and per-language indent
+  plugins.vim            ← Pathogen loading + third-party plugin config
+  editor.vim             ← persistent undo, GUI, helpers, VisualSelection
+plugins/                 ← 52 plugins (managed by Pathogen, NOT vim-plug/lazy)
 autoload/pathogen.vim    ← plugin manager
-colors/                  ← colorschemes extras (gruvbox é o ativo, vive em plugins/)
-test/                    ← suite de testes (vader, jest, shell) — ver docs/test_plan.md
-docs/                    ← documentação (keybindings, test plan)
-nvim/                     ← config Neovim (init.vim, lua/user/*.lua) — symlinkada em ~/.config/nvim por install.sh
-test/nvim/                ← testes so-Neovim: *.vader roda sob `nvim --headless` (init.vim completo), *_spec.lua roda via plenary.nvim (init minimo)
-temp_dirs/undodir/       ← undo persistente (cleanup automático >90 dias)
+colors/                  ← extra colorschemes (gruvbox is the active one, it lives in plugins/)
+test/                    ← test suite (vader, jest, shell) — see docs/test_plan.md
+docs/                    ← documentation (keybindings, test plan)
+nvim/                    ← Neovim config (init.vim, lua/user/*.lua) — symlinked into ~/.config/nvim by install.sh
+test/nvim/               ← Neovim-only tests: *.vader runs under `nvim --headless` (full init.vim), *_spec.lua runs through plenary.nvim (minimal init)
+temp_dirs/undodir/       ← persistent undo (automatic cleanup after 90 days)
 ```
 
-## Ordem de carregamento
+## Load order
 
-O `~/.vimrc` carrega nesta ordem — **a última definição vence**:
+`~/.vimrc` loads in this order — **the last definition wins**:
 
-1. `vimrcs/options.vim` — defaults (shiftwidth=4, colorscheme nenhum, etc.)
+1. `vimrcs/options.vim` — defaults (shiftwidth=4, no colorscheme, etc.)
 2. `vimrcs/filetypes.vim` — filetype detection
-3. `vimrcs/plugins.vim` — Pathogen + config de NERDTree, lightline, Goyo, vim-go, gitgutter, grepprg
+3. `vimrcs/plugins.vim` — Pathogen + config for NERDTree, lightline, Goyo, vim-go, gitgutter, grepprg
 4. `vimrcs/editor.vim` — undo, GUI, command-line helpers
-5. `configs.vim` — **sobrescreve tudo acima** (shiftwidth=2, colorscheme gruvbox, CoC, fzf, mappings)
+5. `configs.vim` — **overrides everything above** (shiftwidth=2, gruvbox colorscheme, CoC, fzf, mappings)
 
-Plugin `plugin/*.vim` files são sourced pelo Vim **depois** do vimrc completo. Para evitar que plugins sobrescrevam mappings, use variáveis globais (ex: `g:ctrlp_map`) setadas ANTES do Pathogen carregar.
+Plugin `plugin/*.vim` files are sourced by Vim **after** the whole vimrc. To keep plugins from overriding mappings, use global variables (e.g. `g:ctrlp_map`) set BEFORE Pathogen loads.
 
-## Convenções obrigatórias
+## Mandatory conventions
 
-- **Sempre usar `nnoremap`** em vez de `map` para mappings de normal mode (evita visual mode leak e recursão)
-- **Sempre envolver autocmds em `augroup`** com `autocmd!` (evita duplicação ao re-source)
-- **Nunca usar `set option!`** (toggle) no escopo global — use valor explícito (`set nohlsearch`)
-- **configs.vim é o arquivo para editar** — vimrcs/ são camadas base herdadas do amix/vimrc
-- **Testes existem e devem passar** — rodar `bash test/run.sh` antes de concluir qualquer mudança
+- **Always use `nnoremap`** instead of `map` for normal-mode mappings (avoids visual-mode leaks and recursion)
+- **Always wrap autocmds in an `augroup`** with `autocmd!` (avoids duplication when re-sourcing)
+- **Never use `set option!`** (toggle) at global scope — use an explicit value (`set nohlsearch`)
+- **configs.vim is the file to edit** — vimrcs/ are base layers inherited from amix/vimrc
+- **Tests exist and must pass** — run `bash test/run.sh` before finishing any change
+- **This repo is public: everything in it is written in English**, except `README*` and `docs/`, which may be bilingual
 
-## Sistema de testes
+## Test suite
 
 ```bash
-bash test/run.sh          # compacto — uma linha por suite
-bash test/run.sh -v       # expandido — cada caso com ✓/✗
-bash test/run.sh -vv      # raw — debug
-bash test/run.sh unit     # só uma suite (unit, integration, e2e, json, shell)
+bash test/run.sh          # compact — one line per suite
+bash test/run.sh -v       # expanded — every case with ✓/✗
+bash test/run.sh -vv      # raw — debugging
+bash test/run.sh unit     # a single suite (unit, integration, e2e, json, shell, nvim-vader, nvim-lua)
 ```
 
-| Suite | Ferramenta | O que testa |
+| Suite | Tool | What it covers |
 |---|---|---|
-| shell | bash | Existência de plugins, binários, integridade |
-| unit | vader.vim | Variáveis, opções, funções VimScript |
+| shell | bash | Presence of plugins and binaries, integrity |
+| unit | vader.vim | Variables, options, VimScript functions |
 | integration | vader.vim | Mappings, autocmds, filetypes, startup |
 | e2e | vader.vim | feedkeys (auto-pairs, surround, rooter) |
-| jest | Node.js | coc-settings.json (schema, tipos, valores) |
+| nvim-vader | vader.vim | Neovim-only cases under the full init.vim |
+| nvim-lua | plenary.nvim | Neovim Lua modules under a minimal init |
+| json | Node.js/jest | coc-settings.json (schema, types, values) |
 
-## Plugins — gerenciamento
+### The `vim-ai-autocomplete` submodule has its OWN suite
 
-- **Manager**: Pathogen (NÃO vim-plug, NÃO lazy.nvim)
-- **Diretório**: `plugins/` — cada subdiretório é um plugin
-- **Submodules**: 33 plugins são git submodules (`.gitmodules`), os demais são embedded
-- **Atualizar**: ver `docs/updating-plugins.md`
+`bash test/run.sh` at the root does **not** run the plugin's tests — those are ~177 separate cases. When touching the plugin, run both suites before finishing:
+
+```bash
+cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Neovim)
+```
+
+- First time: run `git submodule update --init --recursive` inside the plugin — `test/vendor/{vader.vim,plenary.nvim}` ship empty and the runner hangs without them.
+- Use `PlenaryBustedDirectory` (what the runner and CI use); `PlenaryBustedFile` runs in-process and can report a different result.
+- A change to the plugin means **2 commits**: one in the submodule, one at the root bumping the pointer.
+- `~/Programming/vim-ai-autocomplete` is a symlink to `plugins/vim-ai-autocomplete` (same repository).
+- **Rendering** bugs (ghost text, virtual text, cursor position) cannot be verified headlessly: they need a real pty — `tmux new-session -d`, `tmux capture-pane -p`, `tmux display-message -p '#{cursor_x},#{cursor_y}'`.
+
+## Plugins — management
+
+- **Manager**: Pathogen (NOT vim-plug, NOT lazy.nvim)
+- **Directory**: `plugins/` — each subdirectory is a plugin
+- **Submodules**: 35 plugins are git submodules (`.gitmodules`), the rest are embedded
+- **Updating**: see `docs/updating-plugins.md`
 
 ## LSP
 
-- CoC.nvim é o LSP client — `~/.vim/coc-settings.json` (fora deste repo)
-- 22 extensões CoC listadas em `g:coc_global_extensions` no configs.vim
-- Fixture para CI em `test/fixtures/coc-settings.json`
+- CoC.nvim is the LSP client — `~/.vim/coc-settings.json` (outside this repo)
+- 26 CoC extensions listed in `g:coc_global_extensions` in configs.vim
+- CI fixture in `test/fixtures/coc-settings.json`
 
-## O que NÃO fazer
+## What NOT to do
 
-- Não adicionar `map` (usar `nnoremap`)
-- Não criar autocmds fora de augroups
-- Não editar vimrcs/ para features novas (usar configs.vim)
-- Não remover plugins sem atualizar testes (`test/integration/cleanup.vader`)
-- Não commitar `test/node/node_modules/` ou `temp_dirs/undodir/*`
-- Não usar `set option!` (toggle) no escopo global
+- Do not add `map` (use `nnoremap`)
+- Do not create autocmds outside augroups
+- Do not edit vimrcs/ for new features (use configs.vim)
+- Do not remove plugins without updating the tests (`test/integration/cleanup.vader`)
+- Do not commit `test/node/node_modules/` or `temp_dirs/undodir/*`
+- Do not use `set option!` (toggle) at global scope
