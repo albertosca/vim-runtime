@@ -28,16 +28,22 @@ endfunction
 
 call s:LoadApiKeyFromConfig('GEMINI_API_KEY', '~/.config/gemini/vim-ai-autocomplete.env')
 call s:LoadApiKeyFromConfig('ANTHROPIC_API_KEY', '~/.config/anthropic/vim-ai-autocomplete.env')
+call s:LoadApiKeyFromConfig('DEEPSEEK_API_KEY', '~/.config/deepseek/vim-ai-autocomplete.env')
 
 " Modelos do vim-ai-autocomplete (,pr cicla, :VimAiAutocompleteModel <nome>
 " seleciona direto) -- nomes descritivos em vez do default generico
 " 'gemini'/'claude'. claude-sonnet-5 e claude-haiku-4-5 confirmados como
 " IDs validos via chamada real (2026-07-21 -- erro foi so credito de API
 " zerado, nao "modelo desconhecido", que a API acusaria antes do billing).
+" deepseek-v4-flash: familia 'deepseek' (OpenAI-compatible chat completions,
+" api.deepseek.com), adicionada 2026-08-10 pra testar -- key criada sem
+" credito ainda, entao a resposta esperada por enquanto e' erro de billing,
+" nao "modelo desconhecido" (mesma distincao ja validada com o Claude).
 let g:vim_ai_autocomplete_models = [
       \ {'name': 'gemini-flash', 'family': 'gemini', 'model_id': 'gemini-3.1-flash-lite', 'api_key_env': 'GEMINI_API_KEY'},
       \ {'name': 'claude-sonnet', 'family': 'anthropic', 'model_id': 'claude-sonnet-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
       \ {'name': 'claude-haiku', 'family': 'anthropic', 'model_id': 'claude-haiku-4-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
+      \ {'name': 'deepseek-flash', 'family': 'deepseek', 'model_id': 'deepseek-v4-flash', 'api_key_env': 'DEEPSEEK_API_KEY'},
       \ ]
 
 " Highlight cursor line
