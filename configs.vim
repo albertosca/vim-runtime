@@ -36,9 +36,9 @@ call s:LoadApiKeyFromConfig('DEEPSEEK_API_KEY', '~/.config/deepseek/vim-ai-autoc
 " IDs validos via chamada real (2026-07-21 -- erro foi so credito de API
 " zerado, nao "modelo desconhecido", que a API acusaria antes do billing).
 " deepseek-v4-flash: familia 'deepseek' (OpenAI-compatible chat completions,
-" api.deepseek.com), adicionada 2026-08-10 pra testar -- key criada sem
-" credito ainda, entao a resposta esperada por enquanto e' erro de billing,
-" nao "modelo desconhecido" (mesma distincao ja validada com o Claude).
+" api.deepseek.com). Funcional desde 2026-08-25 (thinking desligado no
+" request -- com thinking a completion levava 55s). Qualidade FIM inferior
+" ao gemini-flash nos testes manuais; mantido pra comparacao.
 let g:vim_ai_autocomplete_models = [
       \ {'name': 'gemini-flash', 'family': 'gemini', 'model_id': 'gemini-3.1-flash-lite', 'api_key_env': 'GEMINI_API_KEY'},
       \ {'name': 'claude-sonnet', 'family': 'anthropic', 'model_id': 'claude-sonnet-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
@@ -785,7 +785,8 @@ let g:which_key_map.cd  = 'cd to file dir'
 let g:which_key_map.pp  = 'toggle paste mode'
 let g:which_key_map.pc  = 'CopilotChat'
 let g:which_key_map.pt  = 'vim-ai-autocomplete: toggle auto-trigger'
-let g:which_key_map.pr  = 'vim-ai-autocomplete: toggle provider gemini/claude'
+let g:which_key_map.pr  = 'vim-ai-autocomplete: next model'
+let g:which_key_map.pm  = 'vim-ai-autocomplete: pick model (menu)'
 let g:which_key_map.os  = 'Obsession (session record)'
 let g:which_key_map.mg  = 'glow preview (term)'
 let g:which_key_map.rg  = 'Rg search'
