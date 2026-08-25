@@ -35,15 +35,16 @@ call s:LoadApiKeyFromConfig('DEEPSEEK_API_KEY', '~/.config/deepseek/vim-ai-autoc
 " 'gemini'/'claude'. claude-sonnet-5 e claude-haiku-4-5 confirmados como
 " IDs validos via chamada real (2026-07-21 -- erro foi so credito de API
 " zerado, nao "modelo desconhecido", que a API acusaria antes do billing).
-" deepseek-v4-flash: familia 'deepseek' (OpenAI-compatible chat completions,
-" api.deepseek.com). Funcional desde 2026-08-25 (thinking desligado no
-" request -- com thinking a completion levava 55s). Qualidade FIM inferior
-" ao gemini-flash nos testes manuais; mantido pra comparacao.
+" deepseek-v4-pro: substituiu o v4-flash em 2026-08-25 depois que o flash
+" (sem thinking) se mostrou fraco em FIM nos testes manuais -- indentava
+" errado, repetia o BEFORE, resposta de uma linha. O pro custa 3x ($0.66/M
+" in, off-peak) e respondeu em 1.4-1.9s com thinking desligado (medido em
+" chamada real). Se o pro tambem decepcionar, remover a familia do rodizio.
 let g:vim_ai_autocomplete_models = [
       \ {'name': 'gemini-flash', 'family': 'gemini', 'model_id': 'gemini-3.1-flash-lite', 'api_key_env': 'GEMINI_API_KEY'},
       \ {'name': 'claude-sonnet', 'family': 'anthropic', 'model_id': 'claude-sonnet-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
       \ {'name': 'claude-haiku', 'family': 'anthropic', 'model_id': 'claude-haiku-4-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
-      \ {'name': 'deepseek-flash', 'family': 'deepseek', 'model_id': 'deepseek-v4-flash', 'api_key_env': 'DEEPSEEK_API_KEY'},
+      \ {'name': 'deepseek-pro', 'family': 'deepseek', 'model_id': 'deepseek-v4-pro', 'api_key_env': 'DEEPSEEK_API_KEY'},
       \ ]
 
 " Highlight cursor line
