@@ -556,7 +556,7 @@ Ver também seção 13 (`,mg`, `,mr`, `,Mm`/`,Mr` — compartilhados/anotados l�
 | `,pm` | Escolhe o modelo via `vim.ui.select` (funciona com Telescope automaticamente, se instalado) — alternativa ao `,pr`/comando pra quem tem 3+ modelos ativos |
 | `:VimAiAutocompleteModel <nome>` | Seleciona um modelo diretamente pelo nome, sem precisar ciclar (autocomplete de argumento sugere os nomes ativos) |
 
-> Port nativo em Lua do plugin próprio `vim-ai-autocomplete` (ver seção 26, Vim) — mesma arquitetura (prop_add/Vim 9 textprop do lado Vim; `nvim_buf_set_extmark` do lado Neovim), mesmas API keys (`~/.config/<provedor>/vim-ai-autocomplete.env`, lidas por `configs.vim` no Vim e por `nvim/init.vim` no Neovim — nunca export global em `~/.zsh_secrets`). Substituiu o `minuet-ai.nvim` (removido), que usava `,ap`/`,at` e uma key só em `~/.zsh_secrets`. `,pm` funciona nos dois lados desde 2026-08-25: `popup_menu()` no Vim, `vim.ui.select` no Neovim.
+> Port nativo em Lua do plugin próprio `vim-ai-autocomplete` (ver seção 26, Vim) — mesma arquitetura (prop_add/Vim 9 textprop do lado Vim; `nvim_buf_set_extmark` do lado Neovim), mesmas API keys (`~/.config/<provedor>/vim-ai-autocomplete.env`, lidas por `configs.vim` no Vim e por `nvim/init.vim` no Neovim — nunca export global em `~/.zsh_secrets`). Substituiu o `minuet-ai.nvim` (removido), que usava `,ap`/`,at` e uma key só em `~/.zsh_secrets`. `,pm` funciona nos dois lados: `popup_menu()` no Vim e, desde 2026-08-26, uma janela flutuante nativa no Neovim (`j`/`k` move, `<CR>` seleciona, `<Esc>`/`q` fecha) — antes era `vim.ui.select`, que sem plugin de UI vira um prompt numerado na cmdline.
 
 ---
 
