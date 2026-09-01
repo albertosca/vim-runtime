@@ -89,8 +89,16 @@ Execute (IT-069 arquivo .jinja detectado como htmljinja):
   new
   silent! file /tmp/test_it069.jinja
   filetype detect
-  " Vim detecta .jinja como jinja (alias de htmljinja) dependendo da versao
-  Assert &filetype =~# '\(htmljinja\|jinja\)', 'filetype inesperado para .jinja: ' . &filetype
+  " The jinja FILETYPE comes from Vim's own runtime files, and only newer
+  " runtimes ship the detection (CI's 9.1.0016 does not; the local 9.1 does).
+  " What THIS config promises is the syntax rule in vimrcs/filetypes.vim --
+  " so on runtimes without the detection, assert our own autocmd instead.
+  if &filetype !=# ''
+    Assert &filetype =~# '\(htmljinja\|jinja\)', 'filetype inesperado para .jinja: ' . &filetype
+  else
+    doautocmd filetype_settings BufRead /tmp/test_it069.jinja
+    AssertEqual 'htmljinja', &syntax, 'a regra de syntax do config nao disparou'
+  endif
 After:
   bdelete!
 
