@@ -35,7 +35,13 @@ Execute (UT-036 signcolumn e yes):
   AssertEqual 'yes', &signcolumn
 
 Execute (UT-037 clipboard contem unnamed):
-  Assert &clipboard =~# 'unnamed', 'clipboard nao contem unnamed: ' . &clipboard
+  " a build without +clipboard (e.g. Ubuntu CI's vim) accepts the :set but
+  " cannot hold the value -- asserting it there tests the binary, not the config
+  if has('clipboard')
+    Assert &clipboard =~# 'unnamed', 'clipboard nao contem unnamed: ' . &clipboard
+  else
+    Assert 1, 'sem +clipboard neste build -- pulando'
+  endif
 
 Execute (UT-038 mix_format_on_save e 1):
   AssertEqual 1, g:mix_format_on_save
