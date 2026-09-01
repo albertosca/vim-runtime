@@ -7,7 +7,7 @@
 
 Setup profissional para desenvolvimento poliglota: **Elixir/Phoenix, Ruby/Rails, JS/React/Node, Python, Go, Rust**.
 
-CoC.nvim como LSP client, fzf como busca unificada, e 368 testes automatizados. Veja [Créditos](#créditos).
+CoC.nvim como LSP client, fzf como busca unificada, e 373 testes automatizados. Veja [Créditos](#créditos).
 
 **Funciona também no Neovim** (dual-boot, sem duplicar nenhuma config) — LSP nativo, treesitter, telescope e mais. Ver [`docs/neovim.md`](docs/neovim.md).
 
@@ -164,7 +164,7 @@ Destaques:
 
 ## Testes
 
-368 testes automatizados em 7 suites, rodando a cada push no CI junto com o
+373 testes automatizados em 7 suites, rodando a cada push no CI junto com o
 lint (vint + luacheck):
 
 ```bash
@@ -181,15 +181,15 @@ bash test/run.sh unit     # rodar uma suite específica
   ✓  unit             101 passed  0 failed
   ✓  integration      134 passed  0 failed
   ✓  e2e              19 passed  0 failed
-  ✓  nvim-vader        4 passed  0 failed
-  ✓  nvim-lua         17 passed  0 failed
+  ✓  nvim-vader        5 passed  0 failed
+  ✓  nvim-lua         21 passed  0 failed
   ✓  jest             28 passed  0 failed
   ─────────────────────────────────────────────────────
-  ✓ 368 passed   all green
+  ✓ 373 passed   all green
     2 warn
 ```
 
-O plugin de autocomplete de IA mantém a própria suite de 297 testes em
+O plugin de autocomplete de IA mantém a própria suite de 343 testes em
 [`plugins/vim-ai-autocomplete`](https://github.com/albertosca/vim-ai-autocomplete).
 Detalhes da arquitetura de testes em **[docs/test_plan.md](docs/test_plan.md)**.
 
