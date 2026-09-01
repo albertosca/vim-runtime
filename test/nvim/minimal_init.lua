@@ -10,8 +10,15 @@
 -- (ex: ',rn') vao falhar comparando contra o lhs errado.
 vim.g.mapleader = ','
 
+-- Copilot stays OUT of the runtimepath unless vim.g.copilot_enabled: merely
+-- having copilot.lua / CopilotChat.nvim on the rtp runs their plugin/ files,
+-- which spawn @github/copilot-language-server through npx -- one keychain
+-- prompt per test run, and denying it thrashed the whole machine
+-- (2026-09-01). Same single switch as nvim/lua/user/plugins.lua.
 for _, path in ipairs(vim.fn.glob(vim.fn.expand("~/.local/share/nvim/lazy") .. "/*", true, true)) do
-  vim.opt.rtp:append(path)
+  if vim.g.copilot_enabled == true or not path:lower():find("copilot", 1, true) then
+    vim.opt.rtp:append(path)
+  end
 end
 
 local this_file = debug.getinfo(1, "S").source:sub(2)

@@ -63,8 +63,15 @@ require('lazy').setup({
     -- CopilotChat.nvim precisa de `:Copilot auth` manual — não dá pra
     -- automatizar login interativo.
     { 'gbprod/yanky.nvim' },
-    { 'zbirenbaum/copilot.lua', cmd = 'Copilot', event = 'InsertEnter' },
-    { 'CopilotC-Nvim/CopilotChat.nvim', branch = 'main',
+    -- Copilot is OFF (Alberto, 2026-07-18) -- and "off" has to happen HERE, at
+    -- the lazy spec, not only in user/copilot.lua: with the specs enabled,
+    -- CopilotChat.nvim (no lazy trigger) loaded at every startup and pulled
+    -- copilot.lua in as a dependency, and the plugin files spawned the
+    -- @github/copilot-language-server through npx even though setup() was
+    -- never called -- caught on 2026-09-01, when the headless test suite kept
+    -- launching it. One switch, read by user/copilot.lua as well.
+    { 'zbirenbaum/copilot.lua', cmd = 'Copilot', event = 'InsertEnter', enabled = vim.g.copilot_enabled == true },
+    { 'CopilotC-Nvim/CopilotChat.nvim', branch = 'main', enabled = vim.g.copilot_enabled == true,
       dependencies = { 'zbirenbaum/copilot.lua', 'nvim-lua/plenary.nvim' } },
 
     -- Renderiza markdown (tabelas, headers, checkboxes) direto no buffer via

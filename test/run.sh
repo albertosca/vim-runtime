@@ -240,11 +240,14 @@ run_vader_suite() {
 
   local _start _out _elapsed
   _start=$(now_ms)
+  # stdin from /dev/null: without it a non-headless nvim under a harness whose
+  # stdin never closes sat forever at startup (2026-09-01, 5-minute hang on a
+  # 0.08s suite); with it, any prompt gets EOF and the run proceeds.
   _out=$("$bin" -N -u "$uarg" \
     --cmd "set rtp+=$VADER_RTP" \
     --cmd "let g:copilot_chat_test_mode = 1" \
     -c "Vader! $glob" \
-    -c "qa!" 2>&1) || true
+    -c "qa!" </dev/null 2>&1) || true
   _elapsed=$(( $(now_ms) - _start ))
 
   [[ "$VERBOSE" -eq 2 ]] && echo "$_out"

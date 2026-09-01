@@ -3,12 +3,17 @@
 -- rode `:Copilot auth` uma vez (abre browser + código de dispositivo) —
 -- login interativo, não dá pra automatizar.
 
--- Desativado por padrao (pedido do Alberto, 2026-07-18) -- o copilot.vim
--- irmao do lado Vim estava lancando erro em toda abertura (E723/E10 no
--- client startup, achado real durante teste manual). Simetria entre os
--- dois lados: desliga aqui tambem, mesmo sem termos reproduzido o erro
--- especifico no lado Neovim. Pra reativar: mudar pra `true` e reiniciar.
-local copilot_enabled = false
+-- Off by default (Alberto, 2026-07-18) -- the copilot.vim sibling on the Vim
+-- side threw on every startup (E723/E10 in the client start, real finding
+-- during manual testing). Symmetry between the two sides: off here as well.
+--
+-- The switch is vim.g.copilot_enabled, set in init.vim BEFORE lazy loads the
+-- specs: user/plugins.lua reads it to keep copilot.lua and CopilotChat.nvim
+-- from loading at all. Skipping setup() here was not enough -- the plugins
+-- still loaded at startup and spawned @github/copilot-language-server
+-- (2026-09-01). To re-enable: set vim.g.copilot_enabled = true in init.vim,
+-- restart, then run `:Copilot auth` once.
+local copilot_enabled = vim.g.copilot_enabled == true
 
 if copilot_enabled then
   require('copilot').setup({

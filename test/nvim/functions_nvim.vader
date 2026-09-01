@@ -41,3 +41,23 @@ Execute (NV-004 todo plugin citado em g:pathogen_disabled existe de verdade em p
     Assert isdirectory(expand('~/.vim_runtime/plugins/' . p)),
           \ 'g:pathogen_disabled cita "' . p . '" mas plugins/' . p . ' nao existe'
   endfor
+
+" NV-005: Copilot stays OFF at the lazy spec level, not just at setup(). With
+" the specs enabled, CopilotChat.nvim (no lazy trigger) loaded at every
+" startup, pulled copilot.lua in as a dependency, and their plugin files
+" spawned @github/copilot-language-server through npx -- one keychain prompt
+" per Neovim start, including every headless test run (2026-09-01). This
+" suite runs under the full init.vim, so it sees exactly what a real start
+" sees.
+Execute (NV-005 copilot.lua and CopilotChat.nvim are disabled in lazy and never loaded):
+  " evaluated inside Lua: lazy's plugin objects reference each other, and
+  " luaeval() of the whole table never finishes converting the cycles
+  for name in ['copilot.lua', 'CopilotChat.nvim']
+    " under the test shim (XDG redirected to test/xdg) lazy is not installed
+    " at all -- 'no-lazy' is then as good as 'absent': nothing can load
+    let state = luaeval("(function(n) local ok, cfg = pcall(require, 'lazy.core.config'); if not ok then return 'no-lazy' end; local p = cfg.plugins[n]; if not p then return 'absent' end; return (p.enabled == false and 'disabled') or (p._ and p._.loaded and 'LOADED') or 'enabled-not-loaded' end)(_A)", name)
+    Assert index(['disabled', 'absent', 'no-lazy'], state) >= 0, name . ': expected disabled in the lazy spec, got ' . state
+  endfor
+  AssertEqual 0, exists(':Copilot'), ':Copilot must not exist'
+  AssertEqual 0, exists(':CopilotChat'), ':CopilotChat must not exist'
+  AssertEqual v:false, luaeval("vim.g.copilot_enabled == true"), 'the single switch is off'
