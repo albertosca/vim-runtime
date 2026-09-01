@@ -231,7 +231,7 @@ Execute (IT-088 GitMessenger cria popup em arquivo rastreado pelo git):
     " Obtém SID de configs.vim
     let sid = 0
     for sline in split(execute('scriptnames'), "\n")
-      if sline =~# 'vim_runtime/configs\.vim'
+      if sline =~# '[/\\]configs\.vim$'
         let sid = str2nr(matchstr(sline, '^\s*\zs\d\+'))
         break
       endif
