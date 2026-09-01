@@ -1,0 +1,27 @@
+name: lint
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install luacheck and vint
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y luarocks python3-pip python3-venv
+          sudo luarocks install luacheck
+          # vint still imports pkg_resources, removed from setuptools >= 81
+          python3 -m venv /tmp/vint-env
+          /tmp/vint-env/bin/pip install vim-vint 'setuptools<81'
+          echo "/tmp/vint-env/bin" >> "$GITHUB_PATH"
+
+      - name: vint (Vimscript side)
+        run: vint configs.vim vimrcs/ nvim/init.vim
+
+      - name: luacheck (Lua side)
+        run: luacheck nvim/lua/

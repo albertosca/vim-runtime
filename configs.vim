@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " Chaves de API (Gemini/Claude, usadas por vim-ai-autocomplete e
 " minuet-ai.nvim) -- um arquivo dedicado por provedor em ~/.config/<provedor>/
 " (dir 0700, arquivo 0600), nao mais export no ~/.zsh_secrets (isso vazava a
@@ -99,7 +100,7 @@ augroup END
 let g:table_mode_map_prefix = '<Leader>M'
 
 "Sets numbers to be always shown
-set nu
+set number
 
 " 1 tab == 2 spaces
 set shiftwidth=2
@@ -734,7 +735,7 @@ function! s:StartScreen() abort
   " Não mostra se: abriu com arquivo, sessão restaurada, buffer já tem conteúdo,
   " ou estamos rodando testes (Vader carregado via --cmd)
   if argc() || !empty(v:this_session) || line('$') > 1 || getline(1) !=# ''
-        \ || exists(':Vader') || !empty(globpath(&rtp, 'plugin/vader.vim'))
+        \ || exists(':Vader') || !empty(globpath(&runtimepath, 'plugin/vader.vim'))
     return
   endif
 

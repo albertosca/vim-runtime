@@ -1,3 +1,4 @@
+scriptencoding utf-8
 " Pathogen loading is done in ~/.vimrc — this file only configures plugins
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

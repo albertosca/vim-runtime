@@ -1,0 +1,22 @@
+# vint policy for the lint CI job (.github/workflows/lint.yml).
+# Everything stays on except:
+cmdargs:
+  severity: style_problem
+policies:
+  # 70 legacy hits inherited from amix/vimrc; double vs single quotes carries
+  # no behaviour here and a mass rewrite is churn without safety.
+  ProhibitUnnecessaryDoubleQuote:
+    enabled: false
+  # CleanExtraSpaces() runs :%s on purpose (strip trailing whitespace on save)
+  # and already saves/restores cursor and search register around it.
+  ProhibitCommandWithUnintendedSideEffect:
+    enabled: false
+  ProhibitCommandRelyOnUser:
+    enabled: false
+  # False positive from vint's cross-file state: each file passes alone, but
+  # in a multi-file run the policy pairs configs.vim's scriptencoding with
+  # options.vim's `set encoding` (verified 2026-09-01, vint 0.3.21). At
+  # runtime options.vim sources first, so encoding is set before every other
+  # scriptencoding.
+  ProhibitEncodingOptionAfterScriptEncoding:
+    enabled: false
