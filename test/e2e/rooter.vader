@@ -19,8 +19,11 @@ Execute (E2E-046 rooter detecta mix.exs como raiz de projeto Elixir):
   let target   = g:e2e_repo_root . '/test/fixtures/elixir_project/lib/app.ex'
   let expected = g:e2e_repo_root . '/test/fixtures/elixir_project'
   execute 'edit ' . fnameescape(target)
-  let cwd = fnamemodify(getcwd(), ':p')
-  let exp = fnamemodify(expected, ':p')
+  " resolve() both sides: in CI ~/.vim_runtime is a symlink into the checkout,
+  " and rooter cds into the RESOLVED path -- comparing unresolved vs resolved
+  " fails with rooter working perfectly (same class as the scriptnames SID fix)
+  let cwd = fnamemodify(resolve(getcwd()), ':p')
+  let exp = fnamemodify(resolve(expected), ':p')
   AssertEqual exp, cwd,
         \ 'rooter nao mudou para raiz Elixir: ' . cwd
 After:
@@ -35,8 +38,11 @@ Execute (E2E-047 rooter detecta Gemfile como raiz de projeto Rails):
   let target   = g:e2e_repo_root . '/test/fixtures/rails_project/app/models/user.rb'
   let expected = g:e2e_repo_root . '/test/fixtures/rails_project'
   execute 'edit ' . fnameescape(target)
-  let cwd = fnamemodify(getcwd(), ':p')
-  let exp = fnamemodify(expected, ':p')
+  " resolve() both sides: in CI ~/.vim_runtime is a symlink into the checkout,
+  " and rooter cds into the RESOLVED path -- comparing unresolved vs resolved
+  " fails with rooter working perfectly (same class as the scriptnames SID fix)
+  let cwd = fnamemodify(resolve(getcwd()), ':p')
+  let exp = fnamemodify(resolve(expected), ':p')
   AssertEqual exp, cwd,
         \ 'rooter nao mudou para raiz Rails: ' . cwd
 After:
@@ -51,8 +57,11 @@ Execute (E2E-048 rooter detecta package.json como raiz de projeto Node):
   let target   = g:e2e_repo_root . '/test/fixtures/node_project/src/app.js'
   let expected = g:e2e_repo_root . '/test/fixtures/node_project'
   execute 'edit ' . fnameescape(target)
-  let cwd = fnamemodify(getcwd(), ':p')
-  let exp = fnamemodify(expected, ':p')
+  " resolve() both sides: in CI ~/.vim_runtime is a symlink into the checkout,
+  " and rooter cds into the RESOLVED path -- comparing unresolved vs resolved
+  " fails with rooter working perfectly (same class as the scriptnames SID fix)
+  let cwd = fnamemodify(resolve(getcwd()), ':p')
+  let exp = fnamemodify(resolve(expected), ':p')
   AssertEqual exp, cwd,
         \ 'rooter nao mudou para raiz Node: ' . cwd
 After:
