@@ -189,7 +189,7 @@ bash test/run.sh unit     # rodar uma suite específica
     2 warn
 ```
 
-O plugin de autocomplete de IA mantém a própria suite de 365 testes em
+O plugin de autocomplete de IA mantém a própria suite de 366 testes em
 [`plugins/vim-ai-autocomplete`](https://github.com/albertosca/vim-ai-autocomplete).
 Detalhes da arquitetura de testes em **[docs/test_plan.md](docs/test_plan.md)**.
 

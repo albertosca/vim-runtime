@@ -122,6 +122,11 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set timeoutlen=500
+" ttimeoutlen: how long Vim waits after an ESC to see whether a terminal key
+" code follows (arrow keys, and the <M-.>/<M-,> cycle keys vim-ai-autocomplete
+" declares as ESC+char). Unset it falls back to timeoutlen (500 ms), which is
+" the lag felt after every ESC in insert mode; defaults.vim uses 100.
+set ttimeout ttimeoutlen=50
 
 " Properly disable sound on errors on MacVim
 if has("gui_macvim")
