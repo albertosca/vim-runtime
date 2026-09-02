@@ -94,9 +94,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- 'gr' fica de fora de propósito: colide com o `gr = :tabprev` de sempre
     -- (configs.vim:62, compartilhado com o Vim) — Neovim >=0.11 já mapeia
     -- 'grr' nativamente pra references, sem precisar de config nenhuma aqui.
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    -- Guarded by capability (user/lsp_fallback.lua): a server can attach
+    -- without implementing the method -- tailwindcss on markdown has no
+    -- definition -- and the raw vim.lsp.buf call then prints a warning
+    -- instead of doing anything. Fallbacks are Vim's own gd and K.
+    local lsp_fallback = require('user.lsp_fallback')
+    vim.keymap.set('n', 'gd', lsp_fallback.action('textDocument/definition', vim.lsp.buf.definition,
+      function() vim.cmd('normal! gd') end), opts)
+    vim.keymap.set('n', 'gi', lsp_fallback.action('textDocument/implementation', vim.lsp.buf.implementation), opts)
+    vim.keymap.set('n', 'K', lsp_fallback.action('textDocument/hover', vim.lsp.buf.hover,
+      function() vim.cmd('normal! K') end), opts)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>fo', function()

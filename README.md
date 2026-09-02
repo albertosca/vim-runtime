@@ -7,7 +7,7 @@
 
 Professional setup for polyglot development: **Elixir/Phoenix, Ruby/Rails, JS/React/Node, Python, Go, Rust**.
 
-CoC.nvim as the LSP client, fzf as unified search, and 372 automated tests. See [Credits](#credits).
+CoC.nvim as the LSP client, fzf as unified search, and 375 automated tests. See [Credits](#credits).
 
 **Also works on Neovim** (dual-boot, without duplicating any config) — native LSP, treesitter, telescope and more. See [`docs/neovim.md`](docs/neovim.md).
 
@@ -165,7 +165,7 @@ Highlights:
 
 ## Tests
 
-372 automated tests across 7 suites, running on every push in CI along with
+375 automated tests across 7 suites, running on every push in CI along with
 lint (vint + luacheck):
 
 ```bash
@@ -183,10 +183,10 @@ bash test/run.sh unit     # run a single suite
   ✓  integration      134 passed  0 failed
   ✓  e2e              19 passed  0 failed
   ✓  nvim-vader        5 passed  0 failed
-  ✓  nvim-lua         20 passed  0 failed
+  ✓  nvim-lua         23 passed  0 failed
   ✓  jest             28 passed  0 failed
   ─────────────────────────────────────────────────────
-  ✓ 372 passed   all green
+  ✓ 375 passed   all green
     2 warn
 ```
 
