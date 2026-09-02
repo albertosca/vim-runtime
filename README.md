@@ -190,7 +190,7 @@ bash test/run.sh unit     # run a single suite
     2 warn
 ```
 
-The AI autocomplete plugin keeps its own 362-test suite inside
+The AI autocomplete plugin keeps its own 365-test suite inside
 [`plugins/vim-ai-autocomplete`](https://github.com/albertosca/vim-ai-autocomplete).
 Test architecture details in **[docs/test_plan.md](docs/test_plan.md)**.
 
