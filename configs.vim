@@ -47,6 +47,10 @@ let g:vim_ai_autocomplete_models = [
       \ {'name': 'claude-haiku', 'family': 'anthropic', 'model_id': 'claude-haiku-4-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
       \ {'name': 'deepseek-pro', 'family': 'deepseek', 'model_id': 'deepseek-v4-pro', 'api_key_env': 'DEEPSEEK_API_KEY'},
       \ ]
+" Cycle through up to 3 alternative suggestions with <M-.> / <M-,> (Option+.
+" and Option+, on macOS -- iTerm's Option key must be set to "Esc+"). Each
+" alternative is one extra request, fetched only when asked for.
+let g:vim_ai_autocomplete_alternatives = 3
 
 " Highlight cursor line
 set cursorline
