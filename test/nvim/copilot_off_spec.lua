@@ -1,4 +1,4 @@
--- Copilot must never run (Alberto, 2026-07-18; reaffirmed 2026-09-01 after the
+-- Copilot must never run -- removed from the setup for good on 2026-09-02 (after the
 -- test suites kept spawning @github/copilot-language-server -- one keychain
 -- prompt per run, machine-wide thrashing when denied). This spec runs under
 -- test/nvim/minimal_init.lua, which puts the REAL lazy plugin directories on
@@ -19,9 +19,5 @@ describe("copilot stays off", function()
     for name in pairs(package.loaded) do
       assert.is_nil(name:lower():find('^copilot'), 'loaded module: ' .. name)
     end
-  end)
-
-  it("the single switch is off", function()
-    assert.is_not_true(vim.g.copilot_enabled)
   end)
 end)

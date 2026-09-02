@@ -49,7 +49,7 @@ Execute (NV-004 todo plugin citado em g:pathogen_disabled existe de verdade em p
 " per Neovim start, including every headless test run (2026-09-01). This
 " suite runs under the full init.vim, so it sees exactly what a real start
 " sees.
-Execute (NV-005 copilot.lua and CopilotChat.nvim are disabled in lazy and never loaded):
+Execute (NV-005 copilot.lua and CopilotChat.nvim are gone from lazy and never loaded):
   " evaluated inside Lua: lazy's plugin objects reference each other, and
   " luaeval() of the whole table never finishes converting the cycles
   for name in ['copilot.lua', 'CopilotChat.nvim']
@@ -60,4 +60,3 @@ Execute (NV-005 copilot.lua and CopilotChat.nvim are disabled in lazy and never 
   endfor
   AssertEqual 0, exists(':Copilot'), ':Copilot must not exist'
   AssertEqual 0, exists(':CopilotChat'), ':CopilotChat must not exist'
-  AssertEqual v:false, luaeval("vim.g.copilot_enabled == true"), 'the single switch is off'

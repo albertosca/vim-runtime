@@ -84,12 +84,13 @@ Execute (IT-118 vim-sleuth presente no runtimepath):
         \ 'vim-sleuth nao encontrado no rtp'
 
 " ─────────────────────────────────────────────────────────────────────────────
-" IT-152 a IT-155: AI tools — copilot-chat, vim-claude-code, auto-reload
+" IT-152 a IT-155: AI tools — vim-claude-code, auto-reload. copilot-chat.vim
+" was removed for good on 2026-09-02; IT-152 now guards that removal.
 " ─────────────────────────────────────────────────────────────────────────────
 
-Execute (IT-152 copilot-chat.vim presente no runtimepath):
-  Assert &rtp =~# 'copilot-chat',
-        \ 'copilot-chat.vim nao encontrado no rtp'
+Execute (IT-152 copilot-chat.vim is gone from the runtimepath):
+  Assert &rtp !~# 'copilot-chat', 'copilot-chat.vim must not be on the rtp any more'
+  Assert !isdirectory(expand('~/.vim_runtime/plugins/copilot-chat.vim')), 'plugins/copilot-chat.vim must not exist'
 
 Execute (IT-153 vim-claude-code presente no runtimepath):
   Assert &rtp =~# 'vim-claude-code',
@@ -99,9 +100,9 @@ Execute (IT-154 comando Claude existe):
   Assert exists(':Claude') == 2,
         \ 'comando :Claude nao existe (vim-claude-code nao carregou)'
 
-Execute (IT-155 comando CopilotChatOpen existe):
-  Assert exists(':CopilotChatOpen') == 2,
-        \ 'comando :CopilotChatOpen nao existe (copilot-chat nao carregou)'
+Execute (IT-155 no Copilot command survives):
+  AssertEqual 0, exists(':CopilotChatOpen'), ':CopilotChatOpen must not exist'
+  AssertEqual 0, exists(':Copilot'), ':Copilot must not exist'
 
 " ─────────────────────────────────────────────────────────────────────────────
 " IT-156 a IT-158: vim-tmux-navigator — navegação integrada Vim↔tmux

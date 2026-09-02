@@ -245,7 +245,6 @@ run_vader_suite() {
   # 0.08s suite); with it, any prompt gets EOF and the run proceeds.
   _out=$("$bin" -N -u "$uarg" \
     --cmd "set rtp+=$VADER_RTP" \
-    --cmd "let g:copilot_chat_test_mode = 1" \
     -c "Vader! $glob" \
     -c "qa!" </dev/null 2>&1) || true
   _elapsed=$(( $(now_ms) - _start ))

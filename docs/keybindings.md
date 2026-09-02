@@ -340,20 +340,6 @@ Mesmos atalhos nos dois editores (`vim-surround` no Vim, `nvim-surround` no Neov
 >
 > **No Neovim** este plugin é incompatível (checa `has('terminal')`, que o Neovim não implementa da mesma forma) e fica desligado — não há equivalente hoje. Use o `claude` CLI direto numa pane tmux ao lado.
 
-### Copilot Chat
-
-| Atalho / Comando | Ação | Onde |
-| :--- | :--- | :--- |
-| `,pc` | Abrir chat Copilot | Ambos (plugin diferente por trás) |
-| `(visual) ,cq` | Perguntar ao Copilot sobre a seleção | Ambos |
-| `:CopilotChatToggle` | Toggle do painel de chat | **[Vim]** copilot-chat.vim |
-| `:CopilotChatModels` | Selecionar modelo | Ambos |
-| `:CopilotChatReset` | Limpar conversa atual | Ambos |
-| `:CopilotChatSave [nome]` | Salvar conversa | Ambos |
-| `:CopilotChatLoad [nome]` | Carregar conversa salva | Ambos |
-
-> **No Neovim** é o `CopilotChat.nvim` (Lua) por trás do `,pc` — precisa de **`:Copilot auth`** uma vez (login interativo, abre browser) antes de funcionar.
-
 ---
 
 ## 15. Visual Block
@@ -576,7 +562,7 @@ Ver também seção 13 (`,mg`, `,mr`, `,Mm`/`,Mr` — compartilhados/anotados l�
 | `vim.pack` (plugin manager nativo do Neovim 0.12) | `lazy.nvim` já funciona bem — trocar sem necessidade é churn |
 | `toggleterm.nvim` | Redundante com `vimux`, que já resolve isso via tmux (seção 12) |
 | `neotest` | Redundante com `vim-test`+`vimux` (seção 8) — mudaria o hábito, não complementaria |
-| `avante.nvim` / `codecompanion.nvim` | Redundante — já tem Copilot Chat + Claude Code CLI |
+| `avante.nvim` / `codecompanion.nvim` | Redundante — já tem Claude Code CLI |
 | Next LS / Lexical (Elixir) | Projeto novo oficial "Expert" (fusão de Next LS + Lexical + ElixirLS) sem data de lançamento — só ficar de olho |
 | `typescript-language-server` (`ts_ls`) | **Substituído** por `typescript-tools.nvim` (mais rápido, fala direto com o `tsserver`) — decisão tomada, não pendência |
 

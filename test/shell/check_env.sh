@@ -365,9 +365,7 @@ else
   # Comando numa linha só: continuação com '\' não vale em argumento -c do Vim.
   # mapleader resolvido em runtime (default ',') para consultar o <leader>e.
   _cmd='call writefile(["RESULT single=".get(g:,"tt_single",0)." glob=".get(g:,"tt_glob",0)." order=".get(g:,"tt_order","none")." ratio=".printf("%.2f",get(g:,"claude_code_split_ratio",-1))." precedence=".get(g:,"tt_precedence","none")." newmap=<".maparg("<F8>","n")."> overmap=<".maparg(get(g:,"mapleader",",")."e","n").">"], "/dev/stderr")'
-  # g:copilot_chat_test_mode evita o device-auth input() que trava headless.
   _out=$(timeout 30 vim -N -u "$REPO_ROOT/vimrc_example" -i NONE -es \
-    --cmd "let g:copilot_chat_test_mode = 1" \
     -c "$_cmd" \
     -c 'qa!' < /dev/null 2>&1) || true
 

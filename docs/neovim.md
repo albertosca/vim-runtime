@@ -59,7 +59,7 @@ Pathogen continua cuidando de tudo que é compartilhado com o Vim (`~/.vim_runti
 | `vim-commentary` | *(nenhum)* | `gc`/`gcc` nativos do Neovim ≥0.10 |
 | `vim-snippets` + coc-snippets | `LuaSnip` + `friendly-snippets` | Fonte de snippet do `blink.cmp` |
 | coc-yank | `yanky.nvim` | `,yn`/`,yp` cicla histórico |
-| `copilot-chat.vim` / `vim-claude-code` | `copilot.lua` + `CopilotChat.nvim` | `vim-claude-code` sem equivalente (incompatível, `has('terminal')`) |
+| `vim-claude-code` | — | Sem equivalente (incompatível, `has('terminal')`). Copilot foi removido do setup inteiro em 2026-09-02 |
 | `vim-which-key` | `which-key.nvim` | Parser do vimscript não lê o formato novo de `:map` do Neovim |
 | `typescript-language-server` (`ts_ls`) | `typescript-tools.nvim` | Trocado por decisão explícita — mais rápido, fala direto com `tsserver` |
 
@@ -153,7 +153,6 @@ Histórico útil se algo parecido aparecer de novo — todos com causa raiz conf
 ## Pendências conhecidas (dependem do usuário, não da config)
 
 - **Elixir rename**: `elixir-ls` genuinamente não suporta rename (`renameProvider=false`, confirmado via capabilities) — não é bug daqui. O projeto oficial "Expert" (fusão Next LS + Lexical + ElixirLS) deve resolver isso no futuro, sem ETA ainda.
-- **`:Copilot auth`**: precisa rodar uma vez (login interativo, abre browser) antes do `CopilotChat.nvim` funcionar.
 
 > Ruby (`ruby-lsp`/`rdbg`) e Go (`delve`) já resolvidos — `/usr/local/opt/ruby/bin` e `$HOME/go/bin` estão no `PATH` (`~/.zshrc`), e o `dlv` já foi instalado via `go install`. `ruby-lsp` em si instala sozinho via mason na primeira abertura de um projeto Ruby real.
 

@@ -635,31 +635,13 @@ let g:claude_code_split_ratio = 0.4
 nnoremap <silent> <c-\> <Nop>
 
 " =============================================================================
-" GitHub Copilot (github/copilot.vim, pacote nativo em
-" ~/.vim/pack/github/start/, fora deste repo) desativado por padrao
-" (pedido do Alberto, 2026-07-18) -- o client estava lancando erro em toda
-" abertura do Vim (E723/E10 dentro de copilot#client#Start via
-" RunDeferred, achado real durante teste manual de ,pt). g:loaded_copilot
-" precisa ser setado ANTES do plugin carregar (guarda propria dele em
-" plugin/copilot.vim) -- funciona aqui porque configs.vim e sourced dentro
-" de ~/.vimrc, antes da fase de carregamento de plugin/*.vim do Vim.
-" copilot-chat.vim (plugin separado, secao abaixo) NAO depende do client
-" deste plugin -- confirmado via grep, sem chamadas a copilot#* -- entao
-" continua funcionando normalmente com essa linha ativa. Pra reativar o
-" github/copilot.vim: comentar a linha abaixo e reiniciar o Vim.
+" GitHub Copilot: removed for good (Alberto, 2026-09-02). Neither the native
+" github/copilot.vim package nor copilot-chat.vim is part of this setup any
+" more -- with copilot.vim merely installed in ~/.vim/pack, every Vim start
+" (test runs included) spawned its language server through npx and prompted
+" for the keychain. g:loaded_copilot stays as a tripwire: if the package ever
+" comes back, it must not load.
 let g:loaded_copilot = 1
-
-" =============================================================================
-" copilot-chat.vim — Chat com Copilot dentro do Vim. Vim apenas — no Neovim
-" (Vim9script incompatível, ver Fase 1) os mesmos atalhos são remapeados
-" pro CopilotChat.nvim em user/copilot.lua.
-" Nota: ,c* é reservado para vim-claude-code (explain, fix, refactor, etc.)
-" =============================================================================
-if !has('nvim')
-" ,pc → abre o chat Copilot   visual ,cq → pergunta sobre seleção
-nnoremap <leader>pc :CopilotChatOpen<CR>
-xnoremap <leader>cq :CopilotChat<space>
-endif
 
 " =============================================================================
 " Startup screen — atalhos úteis ao abrir Vim sem argumentos
@@ -693,9 +675,6 @@ function! s:StartScreenLines() abort
           \ '    ,ha ,hh Harpoon                 ,u      Undotree',
           \ '    ,tt     Trouble (diagnostics)   :A      Código <> Teste',
           \ '',
-          \ '    IA',
-          \ '    ,pc     Copilot Chat (:Copilot auth na 1a vez)',
-          \ '',
           \ '    Pressione qualquer tecla para começar...',
           \ ]
   else
@@ -723,7 +702,6 @@ function! s:StartScreenLines() abort
           \ '    ,ce     Explicar seleção        ,os     Obsession on/off',
           \ '    ,cf     Corrigir código         ,u      Undotree',
           \ '    ,cr     Refatorar               :A      Código <> Teste',
-          \ '    ,pc     Copilot Chat',
           \ '',
           \ '    Pressione qualquer tecla para começar...',
           \ ]
@@ -785,7 +763,6 @@ let g:which_key_map.q   = 'scratch buffer (~/buffer)'
 let g:which_key_map.x   = 'scratch markdown (~/buffer.md)'
 let g:which_key_map.cd  = 'cd to file dir'
 let g:which_key_map.pp  = 'toggle paste mode'
-let g:which_key_map.pc  = 'CopilotChat'
 let g:which_key_map.pt  = 'vim-ai-autocomplete: toggle auto-trigger'
 let g:which_key_map.pr  = 'vim-ai-autocomplete: next model'
 let g:which_key_map.pm  = 'vim-ai-autocomplete: pick model (menu)'

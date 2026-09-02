@@ -7,7 +7,7 @@
 
 Setup profissional para desenvolvimento poliglota: **Elixir/Phoenix, Ruby/Rails, JS/React/Node, Python, Go, Rust**.
 
-CoC.nvim como LSP client, fzf como busca unificada, e 373 testes automatizados. Veja [Créditos](#créditos).
+CoC.nvim como LSP client, fzf como busca unificada, e 372 testes automatizados. Veja [Créditos](#créditos).
 
 **Funciona também no Neovim** (dual-boot, sem duplicar nenhuma config) — LSP nativo, treesitter, telescope e mais. Ver [`docs/neovim.md`](docs/neovim.md).
 
@@ -21,7 +21,7 @@ vimrcs/
   filetypes.vim          ← detecção de filetype e indent por linguagem
   plugins.vim            ← Pathogen + config de plugins terceiros
   editor.vim             ← undo persistente, GUI, helpers
-plugins/                 ← 52 plugins (Pathogen)
+plugins/                 ← 51 plugins (Pathogen)
 test/                    ← suite de testes (vader, jest, shell)
 docs/                    ← documentação
   keybindings.md         ← cheatsheet completo de atalhos (Vim e Neovim)
@@ -104,12 +104,12 @@ exemplos e o critério **fica local vs. abre PR**:
 - **Fica local** (só seu): mappings, colorscheme, opções de gosto, paths da máquina.
 - **Abre um PR** (melhora pra todos): trocar/adicionar um plugin, corrigir bug ou default ruim.
 
-## Plugins (52)
+## Plugins (51)
 
 | Categoria | Plugins |
 |---|---|
 | **LSP / Completion** | coc.nvim (25 extensões), vim-snippets |
-| **IA** | copilot-chat.vim, vim-claude-code, vim-ai-autocomplete |
+| **IA** | vim-claude-code, vim-ai-autocomplete |
 | **Busca** | fzf, fzf.vim |
 | **Navegação** | NERDTree, vim-rooter, vim-projectionist, vim-rails, vim-tmux-navigator |
 | **Git** | vim-fugitive, vim-gitgutter, gv.vim |
@@ -164,7 +164,7 @@ Destaques:
 
 ## Testes
 
-373 testes automatizados em 7 suites, rodando a cada push no CI junto com o
+372 testes automatizados em 7 suites, rodando a cada push no CI junto com o
 lint (vint + luacheck):
 
 ```bash
@@ -182,14 +182,14 @@ bash test/run.sh unit     # rodar uma suite específica
   ✓  integration      134 passed  0 failed
   ✓  e2e              19 passed  0 failed
   ✓  nvim-vader        5 passed  0 failed
-  ✓  nvim-lua         21 passed  0 failed
+  ✓  nvim-lua         20 passed  0 failed
   ✓  jest             28 passed  0 failed
   ─────────────────────────────────────────────────────
-  ✓ 373 passed   all green
+  ✓ 372 passed   all green
     2 warn
 ```
 
-O plugin de autocomplete de IA mantém a própria suite de 343 testes em
+O plugin de autocomplete de IA mantém a própria suite de 358 testes em
 [`plugins/vim-ai-autocomplete`](https://github.com/albertosca/vim-ai-autocomplete).
 Detalhes da arquitetura de testes em **[docs/test_plan.md](docs/test_plan.md)**.
 

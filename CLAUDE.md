@@ -11,7 +11,7 @@ vimrcs/
   filetypes.vim          ← filetype detection and per-language indent
   plugins.vim            ← Pathogen loading + third-party plugin config
   editor.vim             ← persistent undo, GUI, helpers, VisualSelection
-plugins/                 ← 52 plugins (managed by Pathogen, NOT vim-plug/lazy)
+plugins/                 ← 51 plugins (managed by Pathogen, NOT vim-plug/lazy)
 autoload/pathogen.vim    ← plugin manager
 colors/                  ← extra colorschemes (gruvbox is the active one, it lives in plugins/)
 test/                    ← test suite (vader, jest, shell) — see docs/test_plan.md
@@ -79,7 +79,7 @@ cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Ne
 
 - **Manager**: Pathogen (NOT vim-plug, NOT lazy.nvim)
 - **Directory**: `plugins/` — each subdirectory is a plugin
-- **Submodules**: 35 plugins are git submodules (`.gitmodules`), the rest are embedded
+- **Submodules**: 34 plugins are git submodules (`.gitmodules`), the rest are embedded
 - **Updating**: see `docs/updating-plugins.md`
 
 ## LSP

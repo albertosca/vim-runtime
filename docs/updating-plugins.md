@@ -79,7 +79,7 @@ Atualizar de uma vez pode obscurecer qual plugin causou uma regressão. Melhor i
 `fzf` (tem binário Go — ver nota abaixo), `coc.nvim` (LSP), `vim-visual-multi`, `vim-matchup`, `vim-devicons`, `vim-nerdtree-syntax-highlight`
 
 **Grupo D — plugins nossos / pinados** (só atualizar intencionalmente):
-`vim-claude-code`, `copilot-chat.vim`, `vim-sleuth`, `vim-tmux-navigator`
+`vim-claude-code`, `vim-sleuth`, `vim-tmux-navigator`
 
 Para cada grupo:
 
@@ -160,13 +160,12 @@ Usa `branch = release` no `.gitmodules` (já configurado). O branch `release` co
 
 Se aparecer erro de compatibilidade de extensões no Vim após update: reverter para o SHA anterior e abrir issue.
 
-### vim-claude-code / copilot-chat.vim (Grupo D)
+### vim-claude-code (Grupo D)
 
 Têm integrações com `configs.vim`. Só atualizar se há bugfix ou feature desejada — revisar o log antes:
 
 ```bash
 git -C plugins/vim-claude-code log --oneline HEAD..origin/HEAD
-git -C plugins/copilot-chat.vim log --oneline HEAD..origin/HEAD
 ```
 
 ---
