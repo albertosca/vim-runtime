@@ -32,3 +32,8 @@ docs/superpowers/
 # Customizações locais do usuário (ver my_configs.vim.example, que É versionado)
 my_configs.vim
 my_configs/
+
+# scratch files people open at the repo root while testing (empty test.ex
+# was swept into a commit twice by `git add -A` on 2026-09-02)
+/test.ex
+/test.exs
