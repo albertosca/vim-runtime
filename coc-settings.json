@@ -85,5 +85,12 @@
   "diagnostic.infoSign": "ℹ",
   "diagnostic.hintSign": "➤",
 
-  "markdown-preview-enhanced.enableScriptExecution": true
+  "markdown-preview-enhanced.enableScriptExecution": true,
+
+  "markdownlint.config": {
+    "default": true,
+    "MD013": false,
+    "MD041": false,
+    "MD033": false
+  }
 }
