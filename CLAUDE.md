@@ -12,6 +12,8 @@ vimrcs/
   plugins.vim            ← Pathogen loading + third-party plugin config
   editor.vim             ← persistent undo, GUI, helpers, VisualSelection
 plugins/                 ← 51 plugins (managed by Pathogen, NOT vim-plug/lazy)
+coc-settings.json        ← CoC config — install.sh symlinks it into ~/.vim/
+my_configs.vim           ← local extension point (gitignored, loaded LAST)
 autoload/pathogen.vim    ← plugin manager
 colors/                  ← extra colorschemes (gruvbox is the active one, it lives in plugins/)
 test/                    ← test suite (vader, jest, shell) — see docs/test_plan.md
@@ -61,9 +63,18 @@ bash test/run.sh unit     # a single suite (unit, integration, e2e, json, shell,
 | nvim-lua | plenary.nvim | Neovim Lua modules under a minimal init |
 | json | Node.js/jest | coc-settings.json (schema, types, values) |
 
+## Lint — runs in CI, run it before finishing
+
+```bash
+luacheck nvim/lua/                        # config Lua (.luacheckrc)
+vint configs.vim vimrcs/ nvim/init.vim    # Vimscript (.vintrc.yaml)
+```
+
+`vint` imports `pkg_resources`, removed from setuptools >= 81 — install it in a venv with `pip install vim-vint 'setuptools<81'`. Every disabled policy in `.vintrc.yaml` carries its reason; one works around a vint bug where state leaks between files in a multi-file run (each file passes alone, the batch does not).
+
 ### The `vim-ai-autocomplete` submodule has its OWN suite
 
-`bash test/run.sh` at the root does **not** run the plugin's tests — those are ~177 separate cases. When touching the plugin, run both suites before finishing:
+`bash test/run.sh` at the root does **not** run the plugin's tests — those are ~378 separate cases. When touching the plugin, run both suites before finishing:
 
 ```bash
 cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Neovim)
@@ -74,6 +85,19 @@ cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Ne
 - A change to the plugin means **2 commits**: one in the submodule, one at the root bumping the pointer.
 - `~/Programming/vim-ai-autocomplete` is a symlink to `plugins/vim-ai-autocomplete` (same repository).
 - **Rendering** bugs (ghost text, virtual text, cursor position) cannot be verified headlessly: they need a real pty — `tmux new-session -d`, `tmux capture-pane -p`, `tmux display-message -p '#{cursor_x},#{cursor_y}'`.
+- The plugin has its own lint too: `luacheck lua/ test/nvim/` and `vint autoload/ plugin/`, both green in its CI.
+- Its `test/minimal_vimrc.vim` sets `packpath` to `$VIMRUNTIME` on purpose — native packages under `~/.vim/pack` load on ANY Vim start and have spawned external processes during test runs.
+
+## Writing tests — non-obvious rules
+
+- **Vader's `Before:`/`After:` are sticky and apply to the blocks that FOLLOW them**, never to the preceding one (verified: an `After:` declared between two blocks does not fire for the first). Declaring cleanup after a block leaks it into the next test — one such leak wiped Vader's own workbench and killed the whole run with E86.
+- **`exists('*autoload#fn')` never triggers autoload** (verified: 0 before the first call, 1 after). To detect an optional autoloaded function, CALL it inside `try` and catch `E117` — otherwise the check stays blind until something else happens to load the script.
+- **Redirect stdin when running Vim/Neovim from a script or agent** (`vim ... </dev/null`): without it a non-headless Vim can wait forever on a prompt — a 0.08s suite hung for 5 minutes this way.
+
+## Gotchas
+
+- **Two Vim binaries**: `/usr/bin/vim` (Apple 9.1.1752) comes BEFORE `/opt/homebrew/bin/vim` (9.2) in PATH, and they differ on regex — inside `substitute()`, `[^\n]*` matches across line breaks on Apple's build and not on brew's. A suite that was green yesterday can fail today with no code change: check `which vim` and run both before hunting a regression.
+- **`my_configs.vim` / `my_configs/`** are the local extension point, loaded last and gitignored — personal settings go there, never in `configs.vim`.
 
 ## Plugins — management
 
@@ -84,8 +108,8 @@ cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Ne
 
 ## LSP
 
-- CoC.nvim is the LSP client — `~/.vim/coc-settings.json` (outside this repo)
-- 26 CoC extensions listed in `g:coc_global_extensions` in configs.vim
+- CoC.nvim is the LSP client — `coc-settings.json` lives HERE, at the repo root; `install.sh` symlinks it to `~/.vim/coc-settings.json`
+- 25 CoC extensions listed in `g:coc_global_extensions` in configs.vim
 - CI fixture in `test/fixtures/coc-settings.json`
 
 ## What NOT to do
@@ -96,3 +120,4 @@ cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Ne
 - Do not remove plugins without updating the tests (`test/integration/cleanup.vader`)
 - Do not commit `test/node/node_modules/` or `temp_dirs/undodir/*`
 - Do not use `set option!` (toggle) at global scope
+- **Never bring GitHub Copilot back** (Alberto, 2026-09-02). It was removed from the whole setup: merely being installed made it spawn `@github/copilot-language-server` through npx on every editor start, test runs included — one keychain prompt each time, and denying it thrashed the machine. NV-005, `test/nvim/copilot_off_spec.lua` and IT-152/155/156 assert its absence; `g:loaded_copilot = 1` stays as a tripwire.
