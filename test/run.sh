@@ -323,8 +323,17 @@ if [[ "$FASE" == "all" || "$FASE" == "nvim-lua" ]]; then
 
     suite_line "nvim-lua" "${pl_pass:-0}" "${pl_fail:-0}" "0" "$_elapsed"
 
+    # Which spec failed, not the whole blob: plenary prints "Fail || <name>"
+    # for each failing case and a "Testing: <file>" header per file, so the
+    # useful line is the failing case plus the file it belongs to. The old
+    # `grep -B2 Fail` matched the per-file "Failed : 0" summaries and printed
+    # a wall of zeros -- a red run said nothing about what broke (2026-09-02).
     if [[ "${pl_fail:-0}" -gt 0 && "$VERBOSE" -eq 0 ]]; then
-      echo "$_clean" | grep -B2 'Fail' | while IFS= read -r line; do
+      echo "$_clean" | awk '
+        /Testing:/ { file = $NF }
+        /^Fail[[:space:]]*\|\|/ { print file ": " substr($0, index($0, "||") + 3) }
+        /Errors[[:space:]]*:[[:space:]]*[1-9]/ { print file ": errored" }
+      ' | while IFS= read -r line; do
         printf "    %b↳ %s%b\n" "$RED" "$line" "$RESET"
       done
     fi
