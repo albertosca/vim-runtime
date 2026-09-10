@@ -96,7 +96,7 @@ cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Ne
 
 ## Gotchas
 
-- **Two Vim binaries**: `/usr/bin/vim` (Apple 9.1.1752) comes BEFORE `/opt/homebrew/bin/vim` (9.2) in PATH, and they differ on regex — inside `substitute()`, `[^\n]*` matches across line breaks on Apple's build and not on brew's. A suite that was green yesterday can fail today with no code change: check `which vim` and run both before hunting a regression.
+- **Two Vim binaries**: `/opt/homebrew/bin/vim` (9.2) comes BEFORE `/usr/bin/vim` (Apple 9.1.1752) in PATH — measured 2026-09-10 in both the tool shell and a login shell, so bare `vim` (and `test/run.sh`) exercises **brew's**, not Apple's. They differ on regex — inside `substitute()`, `[^\n]*` matches across line breaks on Apple's build and not on brew's. A suite that was green yesterday can fail today with no code change: check `which vim` and run both before hunting a regression.
 - **`my_configs.vim` / `my_configs/`** are the local extension point, loaded last and gitignored — personal settings go there, never in `configs.vim`.
 
 ## Plugins — management
