@@ -47,10 +47,18 @@ let g:vim_ai_autocomplete_models = [
       \ {'name': 'claude-haiku', 'family': 'anthropic', 'model_id': 'claude-haiku-4-5', 'api_key_env': 'ANTHROPIC_API_KEY'},
       \ {'name': 'deepseek-pro', 'family': 'deepseek', 'model_id': 'deepseek-v4-pro', 'api_key_env': 'DEEPSEEK_API_KEY'},
       \ ]
-" Cycle through up to 3 alternative suggestions with <M-.> / <M-,> (Option+.
-" and Option+, on macOS -- iTerm's Option key must be set to "Esc+"). Each
-" alternative is one extra request, fetched only when asked for.
+" Cycle through up to 3 alternative suggestions with <C-g>n / <C-g>p. Each
+" alternative is one extra request, fetched only when asked for. The keys are
+" deliberately NOT Alt ones: <M-.>/<M-,> used to be the defaults and cost the
+" <Esc> itself -- claiming an <M-char> key makes ESC+char one key, and with
+" "," being the leader here, <Esc> followed by the leader left Vim in insert
+" mode (measured in a real pty on 2026-09-10, Neovim included).
 let g:vim_ai_autocomplete_alternatives = 3
+
+" No AI completion while writing prose: in markdown a suggestion is on screen
+" almost all the time, which is noise rather than help. ,pt still turns it on
+" by hand for the current buffer when a suggestion IS wanted there.
+let g:vim_ai_autocomplete_disabled_filetypes = ['markdown']
 
 " Highlight cursor line
 set cursorline
