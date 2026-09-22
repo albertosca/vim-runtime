@@ -99,7 +99,7 @@ na seção "Histórico de execuções" ao final.
 
 Agora um plugin standalone publicado em [albertosca/vim-ai-autocomplete](https://github.com/albertosca/vim-ai-autocomplete), consumido aqui via submodule (`plugins/vim-ai-autocomplete/`).
 
-**Pré-requisito:** `GEMINI_API_KEY` em `~/.config/gemini/vim-ai-autocomplete.env` (já configurado, carregado por `s:LoadApiKeyFromConfig` em `configs.vim`). `ANTHROPIC_API_KEY` em `~/.config/anthropic/vim-ai-autocomplete.env`, opcional — com só um modelo ativo, `,pr` não deveria nem se registrar (comportamento esperado, não é bug). Modelos configurados em `g:vim_ai_autocomplete_models` (`configs.vim`): `gemini-flash`, `claude-sonnet`, `claude-haiku`.
+**Pré-requisito:** `GEMINI_API_KEY` em `~/.config/gemini/api.env` (já configurado, carregado por `s:LoadApiKeyFromConfig` em `configs.vim`). `ANTHROPIC_API_KEY` em `~/.config/anthropic/api.env`, opcional — com só um modelo ativo, `,pr` não deveria nem se registrar (comportamento esperado, não é bug). Modelos configurados em `g:vim_ai_autocomplete_models` (`configs.vim`): `gemini-flash`, `claude-sonnet`, `claude-haiku`.
 
 - [ ] **E2E-060** — Abrir um arquivo de código real (`.py`/`.ex`/`.js`), digitar uma linha incompleta (ex: `def soma(a, b):`), parar de digitar por ~1s → sugestão cinza aparece (ghost text, não um menu)
 - [ ] **E2E-061** — `Tab` com a sugestão visível → aceita o texto de verdade (deixa de ser cinza), cursor avança pro fim do texto inserido
@@ -117,7 +117,7 @@ Agora um plugin standalone publicado em [albertosca/vim-ai-autocomplete](https:/
 
 Mesmo projeto do item acima (não é mais o `minuet-ai.nvim` de terceiros, removido em 2026-07-22) — porte Lua nativo do mesmo plugin, `require('vim-ai-autocomplete').setup()` em `nvim/init.vim`.
 
-**Pré-requisito:** mesmas API keys do item acima (`~/.config/<provider>/vim-ai-autocomplete.env`, compartilhadas entre os dois editores).
+**Pré-requisito:** mesmas API keys do item acima (`~/.config/<provider>/api.env`, compartilhadas entre os dois editores).
 
 - [ ] **E2E-069** — Mesmo teste do E2E-060, agora no `nvim` — sugestão ghost-text aparece depois da pausa (via extmarks, não textprop)
 - [ ] **E2E-070** — `Tab` aceita a sugestão (multi-linha incluso)

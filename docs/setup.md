@@ -15,7 +15,7 @@ Guia completo para instalar e configurar o `~/.vim_runtime` em uma máquina nova
 | curl | sim | já vem por padrão | `apt install curl` | vim-ai-autocomplete chama as APIs Gemini/Claude via `curl` |
 | psql / mysql | opcional | `brew install postgresql` / `brew install mysql` | `apt install postgresql-client` / `apt install mysql-client` | vim-dadbod (DB UI) |
 
-**Provider Claude do `,pr`:** precisa de `ANTHROPIC_API_KEY` (`~/.config/anthropic/vim-ai-autocomplete.env`, ver `docs/keybindings.md` seção 26) — billing por API, separado da assinatura Claude Pro/Max. Chegamos a cogitar rotear via `ant` CLI (OAuth) achando que usaria o credito incluso da assinatura, mas confirmamos (2026-07-20) que `ant messages create` cobra do mesmo credito de API pago por token — sem vantagem nenhuma sobre a key estática pra esse uso, entao foi removido do plugin.
+**Provider Claude do `,pr`:** precisa de `ANTHROPIC_API_KEY` (`~/.config/anthropic/api.env`, ver `docs/keybindings.md` seção 26) — billing por API, separado da assinatura Claude Pro/Max. Chegamos a cogitar rotear via `ant` CLI (OAuth) achando que usaria o credito incluso da assinatura, mas confirmamos (2026-07-20) que `ant messages create` cobra do mesmo credito de API pago por token — sem vantagem nenhuma sobre a key estática pra esse uso, entao foi removido do plugin.
 
 ---
 

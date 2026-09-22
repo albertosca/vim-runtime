@@ -27,9 +27,9 @@ function! s:LoadApiKeyFromConfig(env_var, path) abort
   endfor
 endfunction
 
-call s:LoadApiKeyFromConfig('GEMINI_API_KEY', '~/.config/gemini/vim-ai-autocomplete.env')
-call s:LoadApiKeyFromConfig('ANTHROPIC_API_KEY', '~/.config/anthropic/vim-ai-autocomplete.env')
-call s:LoadApiKeyFromConfig('DEEPSEEK_API_KEY', '~/.config/deepseek/vim-ai-autocomplete.env')
+call s:LoadApiKeyFromConfig('GEMINI_API_KEY', '~/.config/gemini/api.env')
+call s:LoadApiKeyFromConfig('ANTHROPIC_API_KEY', '~/.config/anthropic/api.env')
+call s:LoadApiKeyFromConfig('DEEPSEEK_API_KEY', '~/.config/deepseek/api.env')
 
 " Modelos do vim-ai-autocomplete (,pr cicla, :VimAiAutocompleteModel <nome>
 " seleciona direto) -- nomes descritivos em vez do default generico
