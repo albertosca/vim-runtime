@@ -36,6 +36,12 @@
         },
         "formatter": "auto"
       }
+    },
+    "kotlin": {
+      "command": "kotlin-lsp",
+      "args": ["--stdio"],
+      "filetypes": ["kotlin"],
+      "rootPatterns": ["settings.gradle.kts", "settings.gradle"]
     }
   },
 

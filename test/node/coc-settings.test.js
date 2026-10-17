@@ -7,8 +7,8 @@ const path = require('path');
 const os   = require('os');
 
 // Resolve o caminho, expandindo ~ manualmente (Node não expande ~ nativamente)
-function expandHome(p) {
-  return p.startsWith('~') ? path.join(os.homedir(), p.slice(1)) : p;
+function expandHome(filePath) {
+  return filePath.startsWith('~') ? path.join(os.homedir(), filePath.slice(1)) : filePath;
 }
 
 const COC_SETTINGS_PATH = expandHome('~/.vim/coc-settings.json');
@@ -123,9 +123,9 @@ describe('IT-026b: python.defaultInterpreterPath presente (substituto correto)',
   });
 
   test('valor aponta para um interpretador python', () => {
-    const val = settings['python.defaultInterpreterPath'];
-    expect(typeof val).toBe('string');
-    expect(val.length).toBeGreaterThan(0);
+    const interpreterPath = settings['python.defaultInterpreterPath'];
+    expect(typeof interpreterPath).toBe('string');
+    expect(interpreterPath.length).toBeGreaterThan(0);
   });
 });
 
@@ -156,9 +156,9 @@ describe('IT-119: Ruby LSP (languageserver.ruby-lsp)', () => {
   });
 
   test('ruby-lsp cobre filetypes ruby e eruby', () => {
-    const ft = settings['languageserver']['ruby-lsp'].filetypes;
-    expect(ft).toContain('ruby');
-    expect(ft).toContain('eruby');
+    const filetypes = settings['languageserver']['ruby-lsp'].filetypes;
+    expect(filetypes).toContain('ruby');
+    expect(filetypes).toContain('eruby');
   });
 });
 
@@ -198,14 +198,37 @@ describe('IT-120: Inlay hints habilitados', () => {
   });
 
   test('TypeScript inlay hints para parameter names', () => {
-    const val = settings['typescript.inlayHints.parameterNames.enabled'];
-    expect(val).toBeDefined();
-    expect(val).not.toBe('none');
+    const parameterNames = settings['typescript.inlayHints.parameterNames.enabled'];
+    expect(parameterNames).toBeDefined();
+    expect(parameterNames).not.toBe('none');
   });
 
   test('JavaScript inlay hints para parameter names', () => {
-    const val = settings['javascript.inlayHints.parameterNames.enabled'];
-    expect(val).toBeDefined();
-    expect(val).not.toBe('none');
+    const parameterNames = settings['javascript.inlayHints.parameterNames.enabled'];
+    expect(parameterNames).toBeDefined();
+    expect(parameterNames).not.toBe('none');
+  });
+});
+
+// IT-163 — Kotlin language server (JetBrains kotlin-lsp) for Android projects
+describe('IT-163: Kotlin LSP (languageserver.kotlin)', () => {
+  test('kotlin entry present in languageserver', () => {
+    expect(settings['languageserver']['kotlin']).toBeDefined();
+  });
+
+  test('runs kotlin-lsp over stdio', () => {
+    const kotlin = settings['languageserver']['kotlin'];
+    expect(kotlin.command).toBe('kotlin-lsp');
+    expect(kotlin.args).toEqual(['--stdio']);
+  });
+
+  test('covers the kotlin filetype and roots at a Gradle settings file', () => {
+    const kotlin = settings['languageserver']['kotlin'];
+    expect(kotlin.filetypes).toEqual(['kotlin']);
+    expect(kotlin.rootPatterns).toEqual(expect.arrayContaining(['settings.gradle.kts', 'settings.gradle']));
+  });
+
+  test('keeps the ruby-lsp entry alongside it', () => {
+    expect(settings['languageserver']['ruby-lsp']).toBeDefined();
   });
 });
