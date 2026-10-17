@@ -5,7 +5,7 @@ scriptencoding utf-8
 " var pra TODO processo aberto naquele shell). `let $VAR = ...` seta a env
 " var so no processo deste Vim -- e do Neovim tambem, ja que nvim/init.vim
 " da `source ~/.vimrc`, entao um arquivo so cobre os dois lados.
-function! s:LoadApiKeyFromConfig(env_var, path) abort
+function! s:LoadApiKeyFromConfig(environment_variable, path) abort
   let full_path = expand(a:path)
   if !filereadable(full_path)
     return
@@ -15,14 +15,14 @@ function! s:LoadApiKeyFromConfig(env_var, path) abort
     " de '=', nao so a primeira, o que corromperia um valor que contenha
     " '=' (ex: alguns tokens base64). Isolar so a primeira ocorrencia
     " preserva o resto do valor intacto.
-    let eq_idx = stridx(line, '=')
-    if eq_idx ==# -1
+    let equals_index = stridx(line, '=')
+    if equals_index ==# -1
       continue
     endif
-    let key = line[: eq_idx - 1]
-    let value = line[eq_idx + 1 :]
-    if key ==# a:env_var
-      execute 'let $' . a:env_var . ' = ' . string(value)
+    let key = line[: equals_index - 1]
+    let value = line[equals_index + 1 :]
+    if key ==# a:environment_variable
+      execute 'let $' . a:environment_variable . ' = ' . string(value)
     endif
   endfor
 endfunction
@@ -309,8 +309,8 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
       \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  let column = col('.') - 1
+  return !column || getline('.')[column - 1]  =~# '\s'
 endfunction
 
 " Ctrl+Space to trigger completion manually
@@ -408,6 +408,37 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " coc-snippets: expand and jump
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" kotlin-lsp answers gd on a library symbol with a jar:///...!/X.class URI,
+" which Vim cannot read. Fill that buffer through the server's 'decompile'
+" command instead. The optional second argument replaces CocRequest in tests.
+function! KotlinJarDecompile(uri, ...) abort
+  let parameters = {'command': 'decompile', 'arguments': [a:uri]}
+  try
+    let Request = a:0 > 0 ? a:1 : function('CocRequest')
+    let result = Request('kotlin', 'workspace/executeCommand', parameters)
+    let lines = split(get(result, 'code', ''), "\r\\=\n", 1)
+    if !empty(lines) && lines[-1] ==# ''
+      call remove(lines, -1)
+    endif
+    let language = get(result, 'language', 'kotlin')
+  catch
+    let lines = ['// decompile failed for ' . a:uri . ': ' . v:exception]
+    let language = 'kotlin'
+  endtry
+  setlocal buftype=nofile bufhidden=hide noswapfile modifiable
+  silent %delete _
+  call setline(1, lines)
+  let &l:filetype = language
+  setlocal nomodifiable nomodified
+endfunction
+
+augroup KotlinJarSources
+  autocmd!
+  " A pattern without '/' matches only the tail, so jar:*/* is the one that
+  " catches jar:///path/to/lib.jar!/pkg/Class.class (zip.vim does the same).
+  autocmd BufReadCmd jar:*,jar:*/* call KotlinJarDecompile(expand('<amatch>'))
+augroup END
 
 endif " !has('nvim')
 
@@ -582,14 +613,14 @@ function! s:GitMessenger() abort
     echo 'Linha ainda não commitada'
     return
   endif
-  let l:msg = system(printf(
+  let l:message = system(printf(
         \ 'git log -1 --format="%%h %%s%%n%%nAuthor: %%an <%%ae>%%nDate:   %%ad%%n%%n%%b" %s 2>/dev/null',
         \ l:hash))
   if has('popupwin')
-    call popup_atcursor(split(l:msg, "\n"),
+    call popup_atcursor(split(l:message, "\n"),
           \ {'border': [1,1,1,1], 'padding': [0,1,0,1], 'moved': 'any'})
   else
-    echo l:msg
+    echo l:message
   endif
 endfunction
 nmap <silent> <leader>gm :call <SID>GitMessenger()<CR>
@@ -879,10 +910,10 @@ endif " !has('nvim')
 "   cp ~/.vim_runtime/my_configs.vim.example ~/.vim_runtime/my_configs.vim
 " Veja esse .example para o guia "fica local vs. abre PR".
 " =============================================================================
-for s:local_cfg in [expand('~/.vim_runtime/my_configs.vim')]
+for s:local_config in [expand('~/.vim_runtime/my_configs.vim')]
       \ + sort(glob('~/.vim_runtime/my_configs/*.vim', 0, 1))
-  if filereadable(s:local_cfg)
-    execute 'source' fnameescape(s:local_cfg)
+  if filereadable(s:local_config)
+    execute 'source' fnameescape(s:local_config)
   endif
 endfor
-unlet! s:local_cfg
+unlet! s:local_config

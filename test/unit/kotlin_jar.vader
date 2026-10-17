@@ -1,0 +1,67 @@
+" UT-109 a UT-113: KotlinJarDecompile() — library sources from Gradle jars
+" kotlin-lsp answers gd on a library symbol with a jar:///...!/X.class URI;
+" the BufReadCmd jar:* handler fills that buffer through the server's
+" 'decompile' command. The request is injected so no server is needed.
+
+" ─────────────────────────────────────────────────────────────────────────────
+" UT-109 a UT-112: KotlinJarDecompile() with a stubbed request
+" ─────────────────────────────────────────────────────────────────────────────
+
+Before:
+  let g:jar_test_calls = []
+  function! JarTestRequest(server, method, parameters) abort
+    call add(g:jar_test_calls, [a:server, a:method, a:parameters])
+    return {'language': 'kotlin', 'code': "package androidx.activity\n\nopen class ComponentActivity\n"}
+  endfunction
+  function! JarTestFailingRequest(server, method, parameters) abort
+    throw 'request failed: server not ready'
+  endfunction
+  new
+
+After:
+  bwipeout!
+  delfunction JarTestRequest
+  delfunction JarTestFailingRequest
+  unlet! g:jar_test_calls
+
+Execute (UT-109 sends the decompile command with the jar URI to kotlin):
+  let uri = 'jar:///tmp/classes.jar!/androidx/activity/ComponentActivity.class'
+  call KotlinJarDecompile(uri, function('JarTestRequest'))
+  AssertEqual [['kotlin', 'workspace/executeCommand', {'command': 'decompile', 'arguments': [uri]}]], g:jar_test_calls
+
+Execute (UT-110 fills the buffer with the decompiled code, keeping blank lines):
+  call KotlinJarDecompile('jar:///tmp/a.jar!/A.class', function('JarTestRequest'))
+  AssertEqual ['package androidx.activity', '', 'open class ComponentActivity'], getline(1, '$')
+
+Execute (UT-111 marks the buffer as a read-only, unsaved kotlin view):
+  call KotlinJarDecompile('jar:///tmp/a.jar!/A.class', function('JarTestRequest'))
+  AssertEqual 'kotlin', &l:filetype
+  AssertEqual 'nofile', &l:buftype
+  AssertEqual 0, &l:modifiable
+
+Execute (UT-112 a failed request leaves a readable error line, not an empty buffer):
+  call KotlinJarDecompile('jar:///tmp/a.jar!/A.class', function('JarTestFailingRequest'))
+  Assert getline(1) =~# 'decompile failed', 'buffer does not explain the failure: ' . getline(1)
+  Assert getline(1) =~# 'server not ready', 'buffer drops the server error: ' . getline(1)
+  AssertEqual 'nofile', &l:buftype
+
+" ─────────────────────────────────────────────────────────────────────────────
+" UT-113: the autocmd is registered for jar: buffers
+" ─────────────────────────────────────────────────────────────────────────────
+
+Execute (UT-113 BufReadCmd jar:* calls KotlinJarDecompile):
+  let au = execute('autocmd KotlinJarSources BufReadCmd')
+  Assert au =~# 'jar:\*', 'KotlinJarSources has no jar:* pattern: ' . au
+  Assert au =~# 'KotlinJarDecompile', 'KotlinJarSources does not call KotlinJarDecompile: ' . au
+
+" ─────────────────────────────────────────────────────────────────────────────
+" UT-114: opening a real jar:/// URI fires the handler
+" A pattern without '/' matches only the file name's tail, so jar:* alone never
+" matches jar:///a/b.jar!/c/D.class. No server runs here, so the handler takes
+" its failure path, which is enough to prove it ran.
+" ─────────────────────────────────────────────────────────────────────────────
+
+Execute (UT-114 editing a jar:/// URI runs KotlinJarDecompile):
+  execute 'edit' fnameescape('jar:///tmp/classes.jar!/androidx/activity/ComponentActivity.class')
+  AssertEqual 'nofile', &l:buftype
+  Assert getline(1) =~# 'decompile failed', 'jar: buffer was not handled: ' . string(getline(1, 3))
