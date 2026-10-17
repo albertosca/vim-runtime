@@ -1,0 +1,42 @@
+" UT-115 a UT-117: ApplyAndroidGradleTestExecutable()
+" vim-test's Kotlin runner calls './gradlew test', an aggregate task that
+" rejects --tests on Android ("Unknown command-line option '--tests'"), so
+" :TestNearest broke there. Android projects get testDebugUnitTest instead;
+" every other project keeps the runner's default.
+
+Before:
+  let g:android_test_original_directory = getcwd()
+  let g:android_test_project = tempname()
+  call mkdir(g:android_test_project . '/app/src/main', 'p')
+  call writefile([], g:android_test_project . '/gradlew')
+  unlet! g:test#kotlin#gradletest#executable
+
+After:
+  execute 'cd' fnameescape(g:android_test_original_directory)
+  call delete(g:android_test_project, 'rf')
+  unlet! g:test#kotlin#gradletest#executable g:android_test_project g:android_test_original_directory
+
+Execute (UT-115 an Android Gradle project runs unit tests through testDebugUnitTest):
+  call writefile(['<manifest/>'], g:android_test_project . '/app/src/main/AndroidManifest.xml')
+  execute 'cd' fnameescape(g:android_test_project)
+  call ApplyAndroidGradleTestExecutable()
+  AssertEqual './gradlew testDebugUnitTest', get(g:, 'test#kotlin#gradletest#executable', '')
+
+Execute (UT-116 a Gradle project without an Android manifest keeps the default runner):
+  execute 'cd' fnameescape(g:android_test_project)
+  call ApplyAndroidGradleTestExecutable()
+  Assert !exists('g:test#kotlin#gradletest#executable'), 'override leaked into a non-Android project'
+
+Execute (UT-117 leaving an Android project clears the override):
+  call writefile(['<manifest/>'], g:android_test_project . '/app/src/main/AndroidManifest.xml')
+  execute 'cd' fnameescape(g:android_test_project)
+  call ApplyAndroidGradleTestExecutable()
+  call delete(g:android_test_project . '/app/src/main/AndroidManifest.xml')
+  call ApplyAndroidGradleTestExecutable()
+  Assert !exists('g:test#kotlin#gradletest#executable'), 'override survived after leaving the Android project'
+
+Execute (UT-118 the override is applied when a Kotlin buffer is entered):
+  let au = execute('autocmd AndroidGradleTest')
+  Assert au =~# 'BufEnter', 'AndroidGradleTest has no BufEnter: ' . au
+  Assert au =~# '\*\.kt', 'AndroidGradleTest does not cover *.kt: ' . au
+  Assert au =~# 'ApplyAndroidGradleTestExecutable', 'AndroidGradleTest does not call the function: ' . au

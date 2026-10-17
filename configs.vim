@@ -208,6 +208,23 @@ nnoremap <Leader>md :MixFormatDiff<CR>
 let test#elixir#exunit#executable = 'mix test'
 let test#strategy = "vimux"
 
+" vim-test's Kotlin runner calls './gradlew test', an aggregate task that
+" rejects --tests on Android. Android projects (a gradlew next to a module
+" with src/main/AndroidManifest.xml) run unit tests through testDebugUnitTest;
+" everywhere else the runner keeps its own default.
+function! ApplyAndroidGradleTestExecutable() abort
+  if filereadable('gradlew') && !empty(glob('*/src/main/AndroidManifest.xml', 1, 1))
+    let g:test#kotlin#gradletest#executable = './gradlew testDebugUnitTest'
+  else
+    unlet! g:test#kotlin#gradletest#executable
+  endif
+endfunction
+
+augroup AndroidGradleTest
+  autocmd!
+  autocmd BufEnter *.kt call ApplyAndroidGradleTestExecutable()
+augroup END
+
 " Vimux: Utility mappings
 nnoremap <Leader>vp :VimuxPromptCommand<CR>
 nnoremap <Leader>vl :VimuxRunLastCommand<CR>
