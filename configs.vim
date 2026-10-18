@@ -69,13 +69,14 @@ let &colorcolumn="100,".join(range(100,999),",")
 
 " No Neovim, termguicolors (ligado em vimrcs/filetypes.vim quando dentro do
 " tmux) renderiza RGB exato — mais vibrante que a paleta 256 cores aproximada
-" que o Vim usa. 'soft' suaviza o contraste/dureza do gruvbox pra compensar.
+" que o Vim usa. 'soft' suaviza o contraste/dureza do gruvbox-material pra
+" compensar.
 if has('nvim')
-  let g:gruvbox_contrast_dark = 'soft'
+  let g:gruvbox_material_background = 'soft'
 endif
 
 " Default colorscheme
-colorscheme gruvbox
+colorscheme gruvbox-material
 set background=dark    " Setting dark mode
 "
 " yank to clipboard

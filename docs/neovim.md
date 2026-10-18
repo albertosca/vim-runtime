@@ -19,7 +19,7 @@ Ver [`keybindings.md`](keybindings.md) pra todos os atalhos (seções 16+ são e
 | Mecanismo | Quando usar | Exemplo |
 | :--- | :--- | :--- |
 | `g:pathogen_disabled` (lista no `init.vim`) | Plugin **inteiro** não deve carregar no Neovim | `coc.nvim`, `nerdtree`, `vim-gitgutter` |
-| `if has('nvim') ... endif` (dentro de `configs.vim`/`vimrcs/*.vim`) | Só um **trecho** de config diverge, resto é igual | Seção inteira do CoC, `gruvbox_contrast_dark`, `undodir` |
+| `if has('nvim') ... endif` (dentro de `configs.vim`/`vimrcs/*.vim`) | Só um **trecho** de config diverge, resto é igual | Seção inteira do CoC, `gruvbox_material_background`, `undodir` |
 
 Nenhum arquivo do Vim é duplicado pro Neovim — só ganham esses dois tipos de desvio, sempre comentados no próprio ponto onde acontecem.
 
@@ -53,7 +53,7 @@ Pathogen continua cuidando de tudo que é compartilhado com o Vim (`~/.vim_runti
 | `coc.nvim` | `nvim-lspconfig` + `mason.nvim` + `mason-lspconfig` + `blink.cmp` | LSP nativo — ver tabela por linguagem abaixo |
 | `nerdtree` + `vim-nerdtree-syntax-highlight` | `neo-tree.nvim` | Mesmos atalhos (`,nn`/`,nf`) |
 | `vim-gitgutter` | `gitsigns.nvim` | `,d` toggle agora avisa ON/OFF |
-| `lightline.vim` | `lualine.nvim` | Tema gruvbox |
+| `lightline.vim` | `lualine.nvim` | Tema gruvbox-material |
 | `vim-devicons` | `nvim-web-devicons` | Dependência do neo-tree/lualine |
 | `vim-surround` | `nvim-surround` | Mesmos atalhos por padrão |
 | `vim-commentary` | *(nenhum)* | `gc`/`gcc` nativos do Neovim ≥0.10 |
@@ -143,7 +143,7 @@ Histórico útil se algo parecido aparecer de novo — todos com causa raiz conf
 | "Incompatible undo file" ao abrir arquivo já editado no outro editor | Vim e Neovim têm formatos de undo file binários incompatíveis, compartilhavam o mesmo `undodir` | `undodir` separado (`temp_dirs/undodir-nvim`) |
 | `gr` parou de ser `:tabprev` | LSP nativo mapeava `gr` pra references (buffer-local, sempre vence o mapping global) | Removido do `lsp.lua` — Neovim ≥0.11 já tem `grr` nativo pra isso |
 | `Ctrl+n` parou de fazer multi-cursor (vim-visual-multi) | `yanky.nvim` remapeava `Ctrl+n`/`Ctrl+p` globalmente pro histórico de yank, carregando depois via Lua | Movido pra `,yn`/`,yp` |
-| Cores do gruvbox mais vibrantes que no Vim | `termguicolors` liga só no Neovim dentro do tmux (RGB exato) vs paleta 256 cores aproximada do Vim | `g:gruvbox_contrast_dark = 'soft'` só no Neovim |
+| Cores do gruvbox-material mais vibrantes que no Vim | `termguicolors` liga só no Neovim dentro do tmux (RGB exato) vs paleta 256 cores aproximada do Vim | `g:gruvbox_material_background = 'soft'` só no Neovim |
 | Tabela markdown renderizada ficava larga/feia com célula grande | `render-markdown.nvim`: `pipe_table.cell = 'padded'` (padrão) estica toda coluna até a maior célula | Trocado pra `cell = 'raw'` |
 | `glow.nvim` sem cor e sem contraste nas bordas da tabela | Spawna o `glow` via pipe (não pty) — o `glow` detecta e desliga cor | `CLICOLOR_FORCE=1` setado no processo do Neovim (herdado pelo filho) |
 | `,cs` só copiava o nome do arquivo, não o caminho | `expand("%:t")` (tail) — não era bug do Neovim, sempre foi assim | Trocado pra `expand("%:.")` (relativo ao cwd) — vale pros dois editores |

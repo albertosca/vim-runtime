@@ -2,7 +2,7 @@
 -- g:pathogen_disabled). Mesma info essencial: modo, git branch, arquivo,
 -- diagnostics (LSP nativo), posição.
 require('lualine').setup({
-  options = { theme = 'gruvbox' },
+  options = { theme = 'gruvbox-material' },
   sections = {
     lualine_c = { { 'filename' } },
     lualine_x = { 'diagnostics', 'filetype' },

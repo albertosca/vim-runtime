@@ -11,11 +11,11 @@ vimrcs/
   filetypes.vim          ← filetype detection and per-language indent
   plugins.vim            ← Pathogen loading + third-party plugin config
   editor.vim             ← persistent undo, GUI, helpers, VisualSelection
-plugins/                 ← 51 plugins (managed by Pathogen, NOT vim-plug/lazy)
+plugins/                 ← 53 plugins (managed by Pathogen, NOT vim-plug/lazy)
 coc-settings.json        ← CoC config — install.sh symlinks it into ~/.vim/
 my_configs.vim           ← local extension point (gitignored, loaded LAST)
 autoload/pathogen.vim    ← plugin manager
-colors/                  ← extra colorschemes (gruvbox is the active one, it lives in plugins/)
+colors/                  ← extra colorschemes (gruvbox-material is the active one, it lives in plugins/)
 test/                    ← test suite (vader, jest, shell) — see docs/test_plan.md
 docs/                    ← documentation (keybindings, test plan)
 nvim/                    ← Neovim config (init.vim, lua/user/*.lua) — symlinked into ~/.config/nvim by install.sh
@@ -31,7 +31,7 @@ temp_dirs/undodir/       ← persistent undo (automatic cleanup after 90 days)
 2. `vimrcs/filetypes.vim` — filetype detection
 3. `vimrcs/plugins.vim` — Pathogen + config for NERDTree, lightline, Goyo, vim-go, gitgutter, grepprg
 4. `vimrcs/editor.vim` — undo, GUI, command-line helpers
-5. `configs.vim` — **overrides everything above** (shiftwidth=2, gruvbox colorscheme, CoC, fzf, mappings)
+5. `configs.vim` — **overrides everything above** (shiftwidth=2, gruvbox-material colorscheme, CoC, fzf, mappings)
 
 Plugin `plugin/*.vim` files are sourced by Vim **after** the whole vimrc. To keep plugins from overriding mappings, use global variables (e.g. `g:ctrlp_map`) set BEFORE Pathogen loads.
 
@@ -103,7 +103,7 @@ cd plugins/vim-ai-autocomplete && bash test/run.sh   # vader (Vim) + plenary (Ne
 
 - **Manager**: Pathogen (NOT vim-plug, NOT lazy.nvim)
 - **Directory**: `plugins/` — each subdirectory is a plugin
-- **Submodules**: 34 plugins are git submodules (`.gitmodules`), the rest are embedded
+- **Submodules**: 36 plugins are git submodules (`.gitmodules`), the rest are embedded
 - **Updating**: see `docs/updating-plugins.md`
 
 ## LSP

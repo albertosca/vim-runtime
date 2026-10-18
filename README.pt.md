@@ -21,7 +21,7 @@ vimrcs/
   filetypes.vim          ← detecção de filetype e indent por linguagem
   plugins.vim            ← Pathogen + config de plugins terceiros
   editor.vim             ← undo persistente, GUI, helpers
-plugins/                 ← 51 plugins (Pathogen)
+plugins/                 ← 53 plugins (Pathogen)
 test/                    ← suite de testes (vader, jest, shell)
 docs/                    ← documentação
   keybindings.md         ← cheatsheet completo de atalhos (Vim e Neovim)
@@ -104,7 +104,7 @@ exemplos e o critério **fica local vs. abre PR**:
 - **Fica local** (só seu): mappings, colorscheme, opções de gosto, paths da máquina.
 - **Abre um PR** (melhora pra todos): trocar/adicionar um plugin, corrigir bug ou default ruim.
 
-## Plugins (51)
+## Plugins (53)
 
 | Categoria | Plugins |
 |---|---|
@@ -117,7 +117,7 @@ exemplos e o critério **fica local vs. abre PR**:
 | **Testes** | vim-test, vimux |
 | **Linguagens** | vim-elixir, vim-mix-format, vim-go, rust.vim, vim-jsx-improve, vim-js-pretty-template, vim-mdx-js, vim-markdown |
 | **Database** | vim-dadbod, vim-dadbod-ui, vim-dadbod-completion |
-| **UI** | lightline.vim, gruvbox, vim-devicons, vim-nerdtree-syntax-highlight, undotree, goyo.vim, vim-obsession, set_tabline |
+| **UI** | lightline.vim, gruvbox-material, everforest, vim-devicons, vim-nerdtree-syntax-highlight, undotree, goyo.vim, vim-obsession, set_tabline |
 
 > **Neovim** usa um conjunto de plugins Lua próprio (`lazy.nvim`, fora deste diretório) — ver [`docs/neovim.md`](docs/neovim.md) pro inventário completo (LSP nativo, treesitter, telescope, DAP, etc.).
 

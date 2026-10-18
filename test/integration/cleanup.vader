@@ -4,7 +4,7 @@
 " - removeu os 17 plugins mortos do runtimepath
 " - adicionou vim-visual-multi como substituto do vim-multiple-cursors
 " - manteve vim-go e rust.vim (linguagens desejadas)
-" - colorscheme ativo é gruvbox (não desert/peaksea dos layers anteriores)
+" - colorscheme ativo é gruvbox-material (não desert/peaksea dos layers anteriores)
 
 " ─────────────────────────────────────────────────────────────────────────────
 " IT-110: Plugins removidos não estão no runtimepath
@@ -57,11 +57,11 @@ Execute (IT-114 rust.vim mantido no runtimepath):
 " IT-115: Colorscheme ativo
 " ─────────────────────────────────────────────────────────────────────────────
 
-Execute (IT-115 colorscheme ativo e gruvbox):
-  " options.vim → desert, editor.vim → peaksea, configs.vim → gruvbox
-  " Após limpar os layers anteriores, gruvbox deve ser o ativo
-  AssertEqual 'gruvbox', get(g:, 'colors_name', ''),
-        \ 'colorscheme ativo nao e gruvbox: ' . get(g:, 'colors_name', 'NONE')
+Execute (IT-115 colorscheme ativo e gruvbox-material):
+  " options.vim → desert, editor.vim → peaksea, configs.vim → gruvbox-material
+  " Após limpar os layers anteriores, gruvbox-material deve ser o ativo
+  AssertEqual 'gruvbox-material', get(g:, 'colors_name', ''),
+        \ 'colorscheme ativo nao e gruvbox-material: ' . get(g:, 'colors_name', 'NONE')
 
 " ─────────────────────────────────────────────────────────────────────────────
 " IT-116 a IT-118: Novos plugins — vim-matchup, vim-sleuth
