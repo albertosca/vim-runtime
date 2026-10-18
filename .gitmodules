@@ -164,3 +164,9 @@
 [submodule "plugins/vim-ai-autocomplete"]
 	path = plugins/vim-ai-autocomplete
 	url = https://github.com/albertosca/vim-ai-autocomplete.git
+[submodule "plugins/gruvbox-material"]
+	path = plugins/gruvbox-material
+	url = https://github.com/sainnhe/gruvbox-material
+[submodule "plugins/everforest"]
+	path = plugins/everforest
+	url = https://github.com/sainnhe/everforest
