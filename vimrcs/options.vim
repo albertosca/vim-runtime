@@ -149,7 +149,7 @@ if $COLORTERM ==# 'gnome-terminal'
     set t_Co=256
 endif
 
-" colorscheme is set in configs.vim (gruvbox-material)
+" colorscheme is set in configs.vim (gravel)
 set background=dark
 
 " Set extra options when running in GUI mode

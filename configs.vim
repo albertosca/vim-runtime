@@ -63,21 +63,22 @@ let g:vim_ai_autocomplete_disabled_filetypes = ['markdown']
 " Highlight cursor line
 set cursorline
 
-" column with 90
-highlight ColorColumn ctermbg=235 guibg=#2c2d27
+" column with 90 (its color comes from the colorscheme)
 let &colorcolumn="100,".join(range(100,999),",")
 
-" No Neovim, termguicolors (ligado em vimrcs/filetypes.vim quando dentro do
-" tmux) renderiza RGB exato — mais vibrante que a paleta 256 cores aproximada
-" que o Vim usa. 'soft' suaviza o contraste/dureza do gruvbox-material pra
-" compensar.
-if has('nvim')
-  let g:gruvbox_material_background = 'soft'
+" Truecolor in both editors: gravel's hex values are the theme, and the
+" 256-color approximation shifts every one of them. t_8f/t_8b make Vim send
+" RGB escapes through tmux (term=screen-256color, set in vimrcs/filetypes.vim).
+if has('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
-" Default colorscheme
-colorscheme gruvbox-material
-set background=dark    " Setting dark mode
+" Default colorscheme: gravel, generated from ~/.dotfiles/config/theme.
+" Light mode: set background=light (manual switch).
+set background=dark
+colorscheme gravel
 "
 " yank to clipboard
 set clipboard=unnamed " copy to the system clipboard

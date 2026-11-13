@@ -59,12 +59,9 @@ endfunction
 """"""""""""""""""""""""""""""
 " => Shell section
 """"""""""""""""""""""""""""""
-if exists('$TMUX')
-    if has('nvim')
-        set termguicolors
-    else
-        set term=screen-256color
-    endif
+" termguicolors is set for both editors in configs.vim (gravel colorscheme).
+if exists('$TMUX') && !has('nvim')
+    set term=screen-256color
 endif
 
 

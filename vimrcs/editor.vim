@@ -21,7 +21,7 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
-" colorscheme is set in configs.vim (gruvbox-material)
+" colorscheme is set in configs.vim (gravel)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
