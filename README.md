@@ -105,7 +105,7 @@ examples and the **keep it local vs. open a PR** criterion:
 - **Keep it local** (yours only): mappings, colorscheme, taste options, machine paths.
 - **Open a PR** (improves it for everyone): swap/add a plugin, fix a bug or a bad default.
 
-## Plugins (53)
+## Plugins (54)
 
 | Category | Plugins |
 |---|---|
@@ -118,7 +118,7 @@ examples and the **keep it local vs. open a PR** criterion:
 | **Testing** | vim-test, vimux |
 | **Languages** | vim-elixir, vim-mix-format, vim-go, rust.vim, vim-jsx-improve, vim-js-pretty-template, vim-mdx-js, vim-markdown |
 | **Database** | vim-dadbod, vim-dadbod-ui, vim-dadbod-completion |
-| **UI** | lightline.vim, gruvbox-material, everforest, vim-devicons, vim-nerdtree-syntax-highlight, undotree, goyo.vim, vim-obsession, set_tabline |
+| **UI** | lightline.vim, gravel, gruvbox-material, everforest, vim-devicons, vim-nerdtree-syntax-highlight, undotree, goyo.vim, vim-obsession, set_tabline |
 
 > **Neovim** uses its own set of Lua plugins (`lazy.nvim`, outside this directory) — see [`docs/neovim.md`](docs/neovim.md) for the full inventory (native LSP, treesitter, telescope, DAP, etc.).
 
@@ -217,6 +217,8 @@ This config is part of a larger setup:
 ## Credits
 
 This config started as a fork of **[amix/vimrc](https://github.com/amix/vimrc)** by [Amir Salihefendic](https://github.com/amix) — "The Ultimate Vim Configuration". Over time it gained CoC.nvim, fzf, automated tests and a structure of its own, until it diverged so much that keeping it as a fork no longer made sense. The base structure and early history come from the original project; the credits stay here.
+
+The **[gravel](plugins/gravel/)** colorscheme takes its highlighting rules from [Nikita Prokopov (tonsky)](https://tonsky.me/blog/syntax-highlighting/) and his [Alabaster](https://github.com/tonsky/sublime-scheme-alabaster) theme, and its hues from [gruvbox-material](https://github.com/sainnhe/gruvbox-material) by sainnhe (both MIT); details in its README.
 
 ## License
 
