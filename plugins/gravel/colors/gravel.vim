@@ -115,6 +115,49 @@ if &background ==# 'dark'
   hi DiagnosticError guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
   hi jsFuncCall guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
   hi rubyHelper guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi htmlH1 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi htmlH2 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi htmlH3 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi htmlH4 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi htmlH5 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi htmlH6 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi markdownH1 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi markdownH2 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi markdownH3 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi markdownH4 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi markdownH5 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi markdownH6 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+  hi mkdHeading guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownHeadingDelimiter guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdCode guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+  hi mkdCodeDelimiter guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdCodeStart guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdCodeEnd guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownCode guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+  hi markdownCodeBlock guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+  hi markdownCodeDelimiter guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdBlockquote guifg=#e78a4e guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
+  hi markdownBlockquote guifg=#e78a4e guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
+  hi mkdLink guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
+  hi markdownLinkText guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
+  hi mkdURL guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdInlineURL guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
+  hi mkdLinkDef guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
+  hi markdownUrl guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdListItem guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownListMarker guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownOrderedListMarker guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdRule guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownRule guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi mkdDelimiter guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi htmlBold guifg=#d4be98 guibg=NONE guisp=NONE gui=bold ctermfg=180 ctermbg=NONE cterm=bold
+  hi mkdBold guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownBold guifg=#d4be98 guibg=NONE guisp=NONE gui=bold ctermfg=180 ctermbg=NONE cterm=bold
+  hi htmlItalic guifg=#d4be98 guibg=NONE guisp=NONE gui=italic ctermfg=180 ctermbg=NONE cterm=italic
+  hi mkdItalic guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+  hi markdownItalic guifg=#d4be98 guibg=NONE guisp=NONE gui=italic ctermfg=180 ctermbg=NONE cterm=italic
+  hi htmlBoldItalic guifg=#d4be98 guibg=NONE guisp=NONE gui=bold,italic ctermfg=180 ctermbg=NONE cterm=bold,italic
+  hi markdownBoldItalic guifg=#d4be98 guibg=NONE guisp=NONE gui=bold,italic ctermfg=180 ctermbg=NONE cterm=bold,italic
   let g:terminal_ansi_colors = ['#3c3836', '#ea6962', '#a9b665', '#d8a657', '#7daea3', '#d3869b', '#89b482', '#d4be98', '#928374', '#ff8880', '#c2d07e', '#f3c071', '#96c7bc', '#ee9fb4', '#a2ce9a', '#eed8b1']
   if has('nvim')
     hi @variable guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
@@ -191,6 +234,25 @@ if &background ==# 'dark'
     hi @punctuation.special guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
     hi @comment.error guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
     hi @error guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+    hi @markup.heading guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.heading.1 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.heading.2 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.heading.3 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.heading.4 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.heading.5 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.heading.6 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
+    hi @markup.raw guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+    hi @markup.raw.block guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+    hi @markup.quote guifg=#e78a4e guibg=NONE guisp=NONE gui=NONE ctermfg=173 ctermbg=NONE cterm=NONE
+    hi @markup.link guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
+    hi @markup.link.label guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
+    hi @markup.link.url guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+    hi @markup.list guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+    hi @markup.list.checked guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+    hi @markup.list.unchecked guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
+    hi @markup.strong guifg=#d4be98 guibg=NONE guisp=NONE gui=bold ctermfg=180 ctermbg=NONE cterm=bold
+    hi @markup.italic guifg=#d4be98 guibg=NONE guisp=NONE gui=italic ctermfg=180 ctermbg=NONE cterm=italic
+    hi @markup.strikethrough guifg=#928374 guibg=NONE guisp=NONE gui=strikethrough ctermfg=244 ctermbg=NONE cterm=strikethrough
     let g:terminal_color_0 = '#3c3836'
     let g:terminal_color_1 = '#ea6962'
     let g:terminal_color_2 = '#a9b665'
@@ -316,6 +378,49 @@ else
   hi DiagnosticError guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
   hi jsFuncCall guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
   hi rubyHelper guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi htmlH1 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi htmlH2 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi htmlH3 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi htmlH4 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi htmlH5 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi htmlH6 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi markdownH1 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi markdownH2 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi markdownH3 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi markdownH4 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi markdownH5 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi markdownH6 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+  hi mkdHeading guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownHeadingDelimiter guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdCode guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+  hi mkdCodeDelimiter guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdCodeStart guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdCodeEnd guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownCode guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+  hi markdownCodeBlock guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+  hi markdownCodeDelimiter guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdBlockquote guifg=#a54e02 guibg=NONE guisp=NONE gui=NONE ctermfg=130 ctermbg=NONE cterm=NONE
+  hi markdownBlockquote guifg=#a54e02 guibg=NONE guisp=NONE gui=NONE ctermfg=130 ctermbg=NONE cterm=NONE
+  hi mkdLink guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+  hi markdownLinkText guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+  hi mkdURL guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdInlineURL guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+  hi mkdLinkDef guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+  hi markdownUrl guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdListItem guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownListMarker guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownOrderedListMarker guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdRule guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownRule guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi mkdDelimiter guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi htmlBold guifg=#654735 guibg=NONE guisp=NONE gui=bold ctermfg=239 ctermbg=NONE cterm=bold
+  hi mkdBold guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownBold guifg=#654735 guibg=NONE guisp=NONE gui=bold ctermfg=239 ctermbg=NONE cterm=bold
+  hi htmlItalic guifg=#654735 guibg=NONE guisp=NONE gui=italic ctermfg=239 ctermbg=NONE cterm=italic
+  hi mkdItalic guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+  hi markdownItalic guifg=#654735 guibg=NONE guisp=NONE gui=italic ctermfg=239 ctermbg=NONE cterm=italic
+  hi htmlBoldItalic guifg=#654735 guibg=NONE guisp=NONE gui=bold,italic ctermfg=239 ctermbg=NONE cterm=bold,italic
+  hi markdownBoldItalic guifg=#654735 guibg=NONE guisp=NONE gui=bold,italic ctermfg=239 ctermbg=NONE cterm=bold,italic
   let g:terminal_ansi_colors = ['#3c3836', '#b33a3a', '#556011', '#8f5a00', '#36616b', '#83526f', '#28553a', '#a89984', '#7c6f64', '#981e24', '#404900', '#714601', '#1f4b54', '#6b3c58', '#103f26', '#8f816c']
   if has('nvim')
     hi @variable guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
@@ -392,6 +497,25 @@ else
     hi @punctuation.special guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
     hi @comment.error guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
     hi @error guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
+    hi @markup.heading guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.heading.1 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.heading.2 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.heading.3 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.heading.4 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.heading.5 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.heading.6 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
+    hi @markup.raw guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+    hi @markup.raw.block guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+    hi @markup.quote guifg=#a54e02 guibg=NONE guisp=NONE gui=NONE ctermfg=130 ctermbg=NONE cterm=NONE
+    hi @markup.link guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+    hi @markup.link.label guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+    hi @markup.link.url guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+    hi @markup.list guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+    hi @markup.list.checked guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+    hi @markup.list.unchecked guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
+    hi @markup.strong guifg=#654735 guibg=NONE guisp=NONE gui=bold ctermfg=239 ctermbg=NONE cterm=bold
+    hi @markup.italic guifg=#654735 guibg=NONE guisp=NONE gui=italic ctermfg=239 ctermbg=NONE cterm=italic
+    hi @markup.strikethrough guifg=#978974 guibg=NONE guisp=NONE gui=strikethrough ctermfg=102 ctermbg=NONE cterm=strikethrough
     let g:terminal_color_0 = '#3c3836'
     let g:terminal_color_1 = '#b33a3a'
     let g:terminal_color_2 = '#556011'
