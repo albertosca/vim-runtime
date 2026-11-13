@@ -114,7 +114,16 @@ if &background ==# 'dark'
   hi ErrorMsg guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
   hi DiagnosticError guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
   hi jsFuncCall guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi jsDecoratorFunction guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
   hi rubyHelper guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi pythonBuiltin guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi pythonDecoratorName guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi rustFuncCall guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi sqlFunction guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi mysqlFunction guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi cssFunctionName guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi luaFunction guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
+  hi vimFuncName guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
   hi htmlH1 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
   hi htmlH2 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
   hi htmlH3 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
@@ -160,6 +169,24 @@ if &background ==# 'dark'
   hi markdownBoldItalic guifg=#d4be98 guibg=NONE guisp=NONE gui=bold,italic ctermfg=180 ctermbg=NONE cterm=bold,italic
   let g:terminal_ansi_colors = ['#3c3836', '#ea6962', '#a9b665', '#d8a657', '#7daea3', '#d3869b', '#89b482', '#d4be98', '#928374', '#ff8880', '#c2d07e', '#f3c071', '#96c7bc', '#ee9fb4', '#a2ce9a', '#eed8b1']
   if has('nvim')
+    hi Added guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+    hi Changed guifg=#7daea3 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
+    hi Removed guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+    hi OkMsg guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+    hi PreInsert guifg=#a89984 guibg=NONE guisp=NONE gui=NONE ctermfg=138 ctermbg=NONE cterm=NONE
+    hi WinBar guifg=#d4be98 guibg=#1d2021 guisp=NONE gui=NONE ctermfg=180 ctermbg=234 cterm=NONE
+    hi WinBarNC guifg=#a89984 guibg=#1d2021 guisp=NONE gui=NONE ctermfg=138 ctermbg=234 cterm=NONE
+    hi FloatShadow guifg=NONE guibg=#3c3836 guisp=NONE gui=NONE ctermfg=NONE ctermbg=237 cterm=NONE
+    hi FloatShadowThrough guifg=NONE guibg=#3c3836 guisp=NONE gui=NONE ctermfg=NONE ctermbg=237 cterm=NONE
+    hi PmenuShadow guifg=NONE guibg=#3c3836 guisp=NONE gui=NONE ctermfg=NONE ctermbg=237 cterm=NONE
+    hi PmenuShadowThrough guifg=NONE guibg=#3c3836 guisp=NONE gui=NONE ctermfg=NONE ctermbg=237 cterm=NONE
+    hi DiagnosticUnderlineOk guifg=NONE guibg=NONE guisp=#a9b665 gui=undercurl ctermfg=NONE ctermbg=NONE cterm=undercurl
+    hi DiagnosticDeprecated guifg=NONE guibg=NONE guisp=#a89984 gui=strikethrough ctermfg=NONE ctermbg=NONE cterm=strikethrough
+    hi @lsp.mod.deprecated guifg=NONE guibg=NONE guisp=#a89984 gui=strikethrough ctermfg=NONE ctermbg=NONE cterm=strikethrough
+    hi NvimInternalError guifg=#1d2021 guibg=#ea6962 guisp=NONE gui=NONE ctermfg=234 ctermbg=167 cterm=NONE
+    hi NvimFigureBrace guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+    hi NvimSingleQuotedUnknownEscape guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+    hi NvimInvalidSingleQuotedUnknownEscape guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
     hi @variable guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
     hi @variable.builtin guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
     hi @variable.parameter guifg=#d4be98 guibg=NONE guisp=NONE gui=NONE ctermfg=180 ctermbg=NONE cterm=NONE
@@ -211,6 +238,7 @@ if &background ==# 'dark'
     hi @string.special guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
     hi @character guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
     hi @character.special guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
+    hi @diff.plus guifg=#a9b665 guibg=NONE guisp=NONE gui=NONE ctermfg=143 ctermbg=NONE cterm=NONE
     hi @constant guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
     hi @constant.builtin guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
     hi @constant.macro guifg=#a6d29f guibg=NONE guisp=NONE gui=NONE ctermfg=151 ctermbg=NONE cterm=NONE
@@ -228,12 +256,14 @@ if &background ==# 'dark'
     hi @function.method guifg=#7daea3 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
     hi @lsp.typemod.function.declaration guifg=#7daea3 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
     hi @lsp.typemod.method.declaration guifg=#7daea3 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
+    hi @diff.delta guifg=#7daea3 guibg=NONE guisp=NONE gui=NONE ctermfg=109 ctermbg=NONE cterm=NONE
     hi @punctuation guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
     hi @punctuation.delimiter guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
     hi @punctuation.bracket guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
     hi @punctuation.special guifg=#928374 guibg=NONE guisp=NONE gui=NONE ctermfg=244 ctermbg=NONE cterm=NONE
     hi @comment.error guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
     hi @error guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
+    hi @diff.minus guifg=#ea6962 guibg=NONE guisp=NONE gui=NONE ctermfg=167 ctermbg=NONE cterm=NONE
     hi @markup.heading guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
     hi @markup.heading.1 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
     hi @markup.heading.2 guifg=#7daea3 guibg=NONE guisp=NONE gui=bold ctermfg=109 ctermbg=NONE cterm=bold
@@ -377,7 +407,16 @@ else
   hi ErrorMsg guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
   hi DiagnosticError guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
   hi jsFuncCall guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi jsDecoratorFunction guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
   hi rubyHelper guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi pythonBuiltin guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi pythonDecoratorName guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi rustFuncCall guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi sqlFunction guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi mysqlFunction guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi cssFunctionName guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi luaFunction guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
+  hi vimFuncName guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
   hi htmlH1 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
   hi htmlH2 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
   hi htmlH3 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
@@ -423,6 +462,24 @@ else
   hi markdownBoldItalic guifg=#654735 guibg=NONE guisp=NONE gui=bold,italic ctermfg=239 ctermbg=NONE cterm=bold,italic
   let g:terminal_ansi_colors = ['#3c3836', '#b33a3a', '#556011', '#8f5a00', '#36616b', '#83526f', '#28553a', '#a89984', '#7c6f64', '#981e24', '#404900', '#714601', '#1f4b54', '#6b3c58', '#103f26', '#8f816c']
   if has('nvim')
+    hi Added guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+    hi Changed guifg=#36616b guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE
+    hi Removed guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
+    hi OkMsg guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+    hi PreInsert guifg=#6e6257 guibg=NONE guisp=NONE gui=NONE ctermfg=241 ctermbg=NONE cterm=NONE
+    hi WinBar guifg=#654735 guibg=#fbf1c7 guisp=NONE gui=NONE ctermfg=239 ctermbg=230 cterm=NONE
+    hi WinBarNC guifg=#6e6257 guibg=#fbf1c7 guisp=NONE gui=NONE ctermfg=241 ctermbg=230 cterm=NONE
+    hi FloatShadow guifg=NONE guibg=#d5c4a1 guisp=NONE gui=NONE ctermfg=NONE ctermbg=187 cterm=NONE
+    hi FloatShadowThrough guifg=NONE guibg=#d5c4a1 guisp=NONE gui=NONE ctermfg=NONE ctermbg=187 cterm=NONE
+    hi PmenuShadow guifg=NONE guibg=#d5c4a1 guisp=NONE gui=NONE ctermfg=NONE ctermbg=187 cterm=NONE
+    hi PmenuShadowThrough guifg=NONE guibg=#d5c4a1 guisp=NONE gui=NONE ctermfg=NONE ctermbg=187 cterm=NONE
+    hi DiagnosticUnderlineOk guifg=NONE guibg=NONE guisp=#556011 gui=undercurl ctermfg=NONE ctermbg=NONE cterm=undercurl
+    hi DiagnosticDeprecated guifg=NONE guibg=NONE guisp=#6e6257 gui=strikethrough ctermfg=NONE ctermbg=NONE cterm=strikethrough
+    hi @lsp.mod.deprecated guifg=NONE guibg=NONE guisp=#6e6257 gui=strikethrough ctermfg=NONE ctermbg=NONE cterm=strikethrough
+    hi NvimInternalError guifg=#fbf1c7 guibg=#b33a3a guisp=NONE gui=NONE ctermfg=230 ctermbg=131 cterm=NONE
+    hi NvimFigureBrace guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
+    hi NvimSingleQuotedUnknownEscape guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
+    hi NvimInvalidSingleQuotedUnknownEscape guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
     hi @variable guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
     hi @variable.builtin guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
     hi @variable.parameter guifg=#654735 guibg=NONE guisp=NONE gui=NONE ctermfg=239 ctermbg=NONE cterm=NONE
@@ -474,6 +531,7 @@ else
     hi @string.special guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
     hi @character guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
     hi @character.special guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
+    hi @diff.plus guifg=#556011 guibg=NONE guisp=NONE gui=NONE ctermfg=58 ctermbg=NONE cterm=NONE
     hi @constant guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
     hi @constant.builtin guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
     hi @constant.macro guifg=#28553a guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
@@ -491,12 +549,14 @@ else
     hi @function.method guifg=#36616b guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE
     hi @lsp.typemod.function.declaration guifg=#36616b guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE
     hi @lsp.typemod.method.declaration guifg=#36616b guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE
+    hi @diff.delta guifg=#36616b guibg=NONE guisp=NONE gui=NONE ctermfg=240 ctermbg=NONE cterm=NONE
     hi @punctuation guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
     hi @punctuation.delimiter guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
     hi @punctuation.bracket guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
     hi @punctuation.special guifg=#978974 guibg=NONE guisp=NONE gui=NONE ctermfg=102 ctermbg=NONE cterm=NONE
     hi @comment.error guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
     hi @error guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
+    hi @diff.minus guifg=#b33a3a guibg=NONE guisp=NONE gui=NONE ctermfg=131 ctermbg=NONE cterm=NONE
     hi @markup.heading guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
     hi @markup.heading.1 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
     hi @markup.heading.2 guifg=#36616b guibg=NONE guisp=NONE gui=bold ctermfg=240 ctermbg=NONE cterm=bold
