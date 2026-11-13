@@ -42,6 +42,7 @@ Plugin `plugin/*.vim` files are sourced by Vim **after** the whole vimrc. To kee
 - **Never use `set option!`** (toggle) at global scope — use an explicit value (`set nohlsearch`)
 - **configs.vim is the file to edit** — vimrcs/ are base layers inherited from amix/vimrc
 - **Tests exist and must pass** — run `bash test/run.sh` before finishing any change
+- **`plugins/gravel/` is generated** (colors, lightline and lualine themes) by the dotfiles theme generator from its `palette.toml`; never edit it by hand. Change the palette or the generator, regenerate, and commit the output here.
 - **This repo is public: everything in it is written in English**, except `README*` and `docs/`, which may be bilingual
 
 ## Test suite
